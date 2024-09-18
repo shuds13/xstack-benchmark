@@ -1,3 +1,18 @@
+"""
+SH: Modified run script from run_all.py
+
+Modifications:
+
+- Fix error averaging over runs.
+- Check results (includes update to Makefile.generic)
+  - Results checked against first run (e.g., seq.out) using floating point comparison.
+  - Note two tests do not have TEST_ARGS for results.
+- Add option to skip runs that already have results (for restarting)
+- Removed 'atax' kluge to obtain bmark keys
+- Currently doing 3 runs only by default.
+
+"""
+
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter, AutoMinorLocator
 import numpy as np
 import matplotlib.pyplot as plt
@@ -99,7 +114,7 @@ def run_one(path, bmark, test_type):
     with open(test_type + ".log", "w") as fd:
         print(f'Making {"check_"+test_type}')
         # This writes results to files. Files are compared later.
-        # print(f"{bmark=}")  # SH tmp check
+        # print(f"{bmark=}")  # SH check
         if bmark not in TEST_ARGS_MISSING:
             make_process = subprocess.Popen(["make", "check_" + test_type], stdout=fd, stderr=fd)
             stdout, stderr = make_process.communicate()
@@ -144,7 +159,7 @@ def Postprocess(perf_dic_acc, perf_dic, bmark_list, run_num):
         geo = 1
         for bmark in bmark_list:
             geo = geo * pow(perf_dic[bmark][key], 1 / len(bmark_list))
-            mean["geomean"][key] = geo  # SH I think could de-indent
+            mean["geomean"][key] = geo  # SH could de-indent as dont use in loop
 
     perf_dic.update(mean)
     bmark_list.append("geomean")
