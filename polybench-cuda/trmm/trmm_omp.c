@@ -31,8 +31,8 @@ void init_array(int n,int m,
 
 static void kernel(int n, int m,
                    double alpha,
-                   double *B,
-                   double *A) {
+                   double *A,
+                   double *B) {
   for (int i = 0; i < m; i++)
     for (int j = 0; j < n; j++) {
       for (int k = i + 1; k < m; k++)
@@ -101,7 +101,7 @@ int main(int argc, char** argv)
   init_array (n,m, &alpha, A, B);
 
   /* Run kernel. */
-  kernel(n,m, alpha, A, B);
+  kernel_trmm(n,m, alpha, A, B);
 
   /* Prevent dead-code elimination. All live-out data must be printed
      by the function call in argument. */
