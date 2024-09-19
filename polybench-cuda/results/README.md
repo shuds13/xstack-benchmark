@@ -16,7 +16,4 @@ or
 
 to get graphs for a selected compiler. This uses *.out and *.time files in each dir.
 
-You can view graphs for latest results in Collab: |OpenMP Results|
-
-.. |OpenMP Results| image:: https://colab.research.google.com/assets/colab-badge.svg
-  :target:  http://colab.research.google.com/github/shuds13/xstack-benchmark/blob/main/polybench-cuda/results/polybench-cuda-run_2024_09_18_Arg_GCE_node08/plot_comparison_omp_v_tulip_omp.ipynb
+You can view graphs for latest results in Colab: [![OpenMP Results](https://colab.research.google.com/assets/colab-badge.svg)](http://colab.research.google.com/github/shuds13/xstack-benchmark/blob/main/polybench-cuda/results/polybench-cuda-run_2024_09_18_Arg_GCE_node08/plot_comparison_omp_v_tulip_omp.ipynb)
