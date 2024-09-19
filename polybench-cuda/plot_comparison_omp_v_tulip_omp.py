@@ -23,6 +23,9 @@ bmark_list = ['gesummv', 'fdtd-2d', 'heat-3d', 'atax', 'bicg', 'nussinov', 'lu',
 # Set this to True to print speedups
 print_speedups = False
 
+# Set the compiler (e.g., 'clang' or 'gcc')
+compiler = 'gcc' # 'clang'
+
 # Function to read the timing from a file
 def read_time(file_path):
     try:
@@ -41,13 +44,13 @@ for bmark in bmark_list:
     if os.path.exists(bmark):
         os.chdir(bmark)
 
-        # Check if openmp.clang.time exists
-        if os.path.isfile('openmp.clang.time'):
-            openmp_time = read_time('openmp.clang.time')
+        # Check if openmp.{compiler}.time exists
+        if os.path.isfile(f'openmp.{compiler}.time'):
+            openmp_time = read_time(f'openmp.{compiler}.time')
 
-            # Check for tulip.clang.time and tulip.clang.noelle.time
-            tulip_time = read_time('tulip.clang.time')
-            noelle_time = read_time('tulip.clang.noelle.time')
+            # Check for tulip.{compiler}.time and tulip.{compiler}.noelle.time
+            tulip_time = read_time(f'tulip.{compiler}.time')
+            noelle_time = read_time(f'tulip.{compiler}.noelle.time')
 
             if tulip_time is not None or noelle_time is not None:
                 benchmarks.append(bmark)
@@ -76,8 +79,8 @@ if benchmarks:
     fig, ax = plt.subplots(figsize=(10, 6))
     x = range(len(benchmarks))
 
-    ax.bar(x, tulip_speedups, width, label='tulip.clang speedup')
-    ax.bar([p + width for p in x], noelle_speedups, width, label='tulip.clang.noelle speedup')
+    ax.bar(x, tulip_speedups, width, label=f'tulip.{compiler} speedup')
+    ax.bar([p + width for p in x], noelle_speedups, width, label=f'tulip.{compiler}.noelle speedup')
 
     # Set the y-axis to use integer ticks
     ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
@@ -88,12 +91,12 @@ if benchmarks:
     ax.axhline(1, color='black', linewidth=1.5, label='Speedup = 1')
 
     ax.set_ylabel('Speedup relative to original OpenMP')
-    ax.set_title('OpenMP on CPU (Clang): Speedup of OpenMP transpiled from CUDA v original OpenMP')
+    ax.set_title(f'OpenMP on CPU ({compiler.capitalize()}): Speedup of OpenMP transpiled from CUDA v original OpenMP')
     ax.set_xticks([p + width / 2 for p in x])
     ax.set_xticklabels(benchmarks, rotation=70)
     ax.legend()
 
     # Save the plot to a file
     plt.tight_layout()
-    plt.savefig('benchmark_speedups.png')
+    plt.savefig(f'benchmark_speedups_{compiler}.png')
     plt.close()
