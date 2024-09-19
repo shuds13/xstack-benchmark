@@ -1,0 +1,380 @@
+Note: SKIP_IF_EXISTS is set - will skip running tests that already have output
+Will run 3 repititions for each run
+
+
+### Experiment Start ####
+Finish cleaning
+Generating seq on syrk 
+Making check_seq
+Making run_seq
+seq succeeded for syrk 
+Generating openmp on syrk 
+Making check_openmp
+Making run_openmp
+openmp succeeded for syrk 
+Generating tulip on syrk 
+Making check_tulip
+Making run_tulip
+tulip succeeded for syrk 
+syrk
+Generating seq on syr2k 
+Making check_seq
+Making run_seq
+seq succeeded for syr2k 
+Generating openmp on syr2k 
+Making check_openmp
+Making run_openmp
+openmp succeeded for syr2k 
+Generating tulip on syr2k 
+Making check_tulip
+Making run_tulip
+tulip succeeded for syr2k 
+syr2k
+Generating seq on gemm 
+Making check_seq
+Making run_seq
+seq succeeded for gemm 
+Generating openmp on gemm 
+Making check_openmp
+Making run_openmp
+openmp succeeded for gemm 
+Generating tulip on gemm 
+Making check_tulip
+Making run_tulip
+tulip succeeded for gemm 
+gemm
+Generating seq on 2mm 
+Making check_seq
+Making run_seq
+seq succeeded for 2mm 
+Generating openmp on 2mm 
+Making check_openmp
+Making run_openmp
+openmp succeeded for 2mm 
+Generating tulip on 2mm 
+Making check_tulip
+Making run_tulip
+tulip succeeded for 2mm 
+2mm
+Generating seq on 3mm 
+Making check_seq
+No TEST_ARGS for 3mm.
+Making run_seq
+seq succeeded for 3mm 
+Generating openmp on 3mm 
+Making check_openmp
+No TEST_ARGS for 3mm.
+Making run_openmp
+openmp succeeded for 3mm 
+Generating tulip on 3mm 
+Making check_tulip
+No TEST_ARGS for 3mm.
+Making run_tulip
+tulip succeeded for 3mm 
+3mm
+Generating seq on doitgen 
+Making check_seq
+Making run_seq
+seq succeeded for doitgen 
+Generating openmp on doitgen 
+Making check_openmp
+Making run_openmp
+openmp succeeded for doitgen 
+Generating tulip on doitgen 
+Making check_tulip
+Making run_tulip
+tulip succeeded for doitgen 
+doitgen
+Generating seq on adi 
+Making check_seq
+Making run_seq
+seq succeeded for adi 
+Generating openmp on adi 
+Making check_openmp
+Making run_openmp
+openmp succeeded for adi 
+Generating tulip on adi 
+Making check_tulip
+Making run_tulip
+tulip succeeded for adi 
+adi
+Generating seq on fdtd-2d 
+Making check_seq
+Making run_seq
+seq succeeded for fdtd-2d 
+Generating openmp on fdtd-2d 
+Making check_openmp
+Making run_openmp
+openmp succeeded for fdtd-2d 
+Generating tulip on fdtd-2d 
+Making check_tulip
+Making run_tulip
+tulip succeeded for fdtd-2d 
+fdtd-2d
+Generating seq on gemver 
+Making check_seq
+Making run_seq
+seq succeeded for gemver 
+Generating openmp on gemver 
+Making check_openmp
+Making run_openmp
+openmp succeeded for gemver 
+Generating tulip on gemver 
+Making check_tulip
+Making run_tulip
+tulip succeeded for gemver 
+gemver
+Generating seq on jacobi-1d-imper 
+Making check_seq
+Making run_seq
+seq succeeded for jacobi-1d-imper 
+Generating openmp on jacobi-1d-imper 
+Making check_openmp
+Making run_openmp
+openmp succeeded for jacobi-1d-imper 
+Generating tulip on jacobi-1d-imper 
+Making check_tulip
+Making run_tulip
+tulip succeeded for jacobi-1d-imper 
+jacobi-1d-imper
+Generating seq on jacobi-2d-imper 
+Making check_seq
+Making run_seq
+seq succeeded for jacobi-2d-imper 
+Generating openmp on jacobi-2d-imper 
+Making check_openmp
+Making run_openmp
+openmp succeeded for jacobi-2d-imper 
+Generating tulip on jacobi-2d-imper 
+Making check_tulip
+Making run_tulip
+tulip succeeded for jacobi-2d-imper 
+jacobi-2d-imper
+Generating seq on mvt 
+Making check_seq
+No TEST_ARGS for mvt.
+Making run_seq
+seq succeeded for mvt 
+Generating openmp on mvt 
+Making check_openmp
+No TEST_ARGS for mvt.
+Making run_openmp
+openmp succeeded for mvt 
+Generating tulip on mvt 
+Making check_tulip
+No TEST_ARGS for mvt.
+Making run_tulip
+tulip succeeded for mvt 
+mvt
+Generating seq on atax 
+Making check_seq
+Making run_seq
+seq succeeded for atax 
+Generating openmp on atax 
+Making check_openmp
+Making run_openmp
+openmp succeeded for atax 
+Generating tulip on atax 
+Making check_tulip
+Making run_tulip
+tulip succeeded for atax 
+atax
+Generating seq on bicg 
+Making check_seq
+Making run_seq
+seq succeeded for bicg 
+Generating openmp on bicg 
+Making check_openmp
+Making run_openmp
+openmp succeeded for bicg 
+Generating tulip on bicg 
+Making check_tulip
+Making run_tulip
+tulip succeeded for bicg 
+bicg
+Generating seq on gesummv 
+Making check_seq
+Making run_seq
+seq succeeded for gesummv 
+Generating openmp on gesummv 
+Making check_openmp
+Making run_openmp
+openmp succeeded for gesummv 
+Generating tulip on gesummv 
+Making check_tulip
+Making run_tulip
+tulip succeeded for gesummv 
+gesummv
+Generating seq on symm 
+Making check_seq
+Making run_seq
+seq succeeded for symm 
+Generating openmp on symm 
+Making check_openmp
+Making run_openmp
+openmp succeeded for symm 
+Generating tulip on symm 
+Making check_tulip
+Making run_tulip
+tulip succeeded for symm 
+symm
+Generating seq on lu 
+Making check_seq
+Making run_seq
+seq succeeded for lu 
+Generating openmp on lu 
+Making check_openmp
+Making run_openmp
+openmp succeeded for lu 
+Generating tulip on lu 
+Making check_tulip
+Making run_tulip
+tulip succeeded for lu 
+lu
+Generating seq on covariance 
+Making check_seq
+Making run_seq
+seq succeeded for covariance 
+Generating openmp on covariance 
+Making check_openmp
+Making run_openmp
+openmp succeeded for covariance 
+Generating tulip on covariance 
+Making check_tulip
+Making run_tulip
+tulip succeeded for covariance 
+covariance
+Generating seq on correlation 
+Making check_seq
+Making run_seq
+seq succeeded for correlation 
+Generating openmp on correlation 
+Making check_openmp
+Making run_openmp
+openmp succeeded for correlation 
+Generating tulip on correlation 
+Making check_tulip
+Making run_tulip
+tulip succeeded for correlation 
+correlation
+Generating seq on trmm 
+Making check_seq
+Making run_seq
+seq succeeded for trmm 
+Generating openmp on trmm 
+Making check_openmp
+Making run_openmp
+openmp succeeded for trmm 
+Generating tulip on trmm 
+Making check_tulip
+Making run_tulip
+tulip succeeded for trmm 
+trmm
+Generating seq on cholesky 
+Making check_seq
+Making run_seq
+seq succeeded for cholesky 
+Generating openmp on cholesky 
+Making check_openmp
+Making run_openmp
+openmp succeeded for cholesky 
+Generating tulip on cholesky 
+Making check_tulip
+Making run_tulip
+tulip succeeded for cholesky 
+cholesky
+Generating seq on nussinov 
+Making check_seq
+Making run_seq
+seq succeeded for nussinov 
+Generating openmp on nussinov 
+Making check_openmp
+Making run_openmp
+openmp succeeded for nussinov 
+Generating tulip on nussinov 
+Making check_tulip
+Making run_tulip
+tulip succeeded for nussinov 
+nussinov
+Generating seq on seidel-2d 
+Making check_seq
+Making run_seq
+seq succeeded for seidel-2d 
+Generating openmp on seidel-2d 
+Making check_openmp
+Making run_openmp
+openmp succeeded for seidel-2d 
+Generating tulip on seidel-2d 
+Making check_tulip
+Making run_tulip
+tulip succeeded for seidel-2d 
+seidel-2d
+Generating seq on heat-3d 
+Making check_seq
+Making run_seq
+seq succeeded for heat-3d 
+Generating openmp on heat-3d 
+Making check_openmp
+Making run_openmp
+openmp succeeded for heat-3d 
+Generating tulip on heat-3d 
+Making check_tulip
+Making run_tulip
+tulip succeeded for heat-3d 
+heat-3d
+syrk
+syr2k
+gemm
+2mm
+3mm
+doitgen
+adi
+fdtd-2d
+gemver
+jacobi-1d-imper
+jacobi-2d-imper
+mvt
+atax
+bicg
+gesummv
+symm
+lu
+covariance
+correlation
+trmm
+cholesky
+nussinov
+seidel-2d
+heat-3d
+syrk
+syr2k
+gemm
+2mm
+3mm
+doitgen
+adi
+fdtd-2d
+gemver
+jacobi-1d-imper
+jacobi-2d-imper
+mvt
+atax
+bicg
+gesummv
+symm
+lu
+covariance
+correlation
+trmm
+cholesky
+nussinov
+seidel-2d
+heat-3d
+Output mismatch {'syrk': {'openmp.clang': True, 'openmp.gcc': True, 'tulip.clang': False, 'tulip.gcc': False, 'tulip.clang.noelle': False, 'tulip.gcc.noelle': False}}
+Output mismatch {'syr2k': {'openmp.clang': True, 'openmp.gcc': True, 'tulip.clang': False, 'tulip.gcc': False, 'tulip.clang.noelle': False, 'tulip.gcc.noelle': False}}
+Output mismatch {'adi': {'openmp.clang': False, 'openmp.gcc': True, 'tulip.clang': True, 'tulip.gcc': True, 'tulip.clang.noelle': True, 'tulip.gcc.noelle': True}}
+Output mismatch {'gemver': {'openmp.clang': True, 'openmp.gcc': True, 'tulip.clang': True, 'tulip.gcc': True, 'tulip.clang.noelle': False, 'tulip.gcc.noelle': False}}
+Output mismatch {'lu': {'openmp.clang': False, 'openmp.gcc': False, 'tulip.clang': False, 'tulip.gcc': False, 'tulip.clang.noelle': False, 'tulip.gcc.noelle': False}}
+Output mismatch {'trmm': {'openmp.clang': True, 'openmp.gcc': True, 'tulip.clang': False, 'tulip.gcc': False, 'tulip.clang.noelle': False, 'tulip.gcc.noelle': False}}
+Output mismatch {'cholesky': {'openmp.clang': False, 'openmp.gcc': False, 'tulip.clang': False, 'tulip.gcc': False, 'tulip.clang.noelle': False, 'tulip.gcc.noelle': False}}
+Output mismatch {'nussinov': {'openmp.clang': False, 'openmp.gcc': False, 'tulip.clang': False, 'tulip.gcc': True, 'tulip.clang.noelle': False, 'tulip.gcc.noelle': True}}

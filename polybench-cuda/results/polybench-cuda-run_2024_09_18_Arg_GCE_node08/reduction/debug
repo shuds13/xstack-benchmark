@@ -1,0 +1,2480 @@
+CBackend: iterating function 1759: llvm.dbg.declare
+CBackend: iterating function 1759: llvm.nvvm.read.ptx.sreg.ctaid.x
+CBackend: iterating function 1759: llvm.nvvm.read.ptx.sreg.ntid.x
+CBackend: iterating function 1759: llvm.nvvm.read.ptx.sreg.tid.x
+CBackend: iterating function 1759: cudaSetupArgument
+CBackend: iterating function 1759: cudaLaunch
+CBackend: iterating function 1759: _Z17initialize_vectorPii
+CBackend: printing function 1770_Z17initialize_vectorPii
+CBackend: here? 1175
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+term 6818:   br i1 %cmp, label %for.body, label %for.end, !dbg !768
+none omp loop ub:   %0 = sext i32 %n to i64, !dbg !765
+=========LOOP PROFILES=========
+Loop: Loop at depth 1 containing: %for.cond<header><exiting>,%for.body,%for.inc<latch>
+
+isomp: 0
+SUSAN: opnd0  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: opnd1  %0 = sext i32 %n to i64, !dbg !765
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: BB:
+entry:
+  call void @llvm.dbg.value(metadata i32* %v, metadata !759, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 %n, metadata !761, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 0, metadata !762, metadata !DIExpression()), !dbg !764
+  %0 = sext i32 %n to i64, !dbg !765
+  br label %for.cond, !dbg !765
+
+SUSAN: BB:
+for.cond:                                         ; preds = %for.inc, %entry
+  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+  call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !762, metadata !DIExpression()), !dbg !764
+  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+  br i1 %cmp, label %for.body, label %for.end, !dbg !768
+
+SUSAN: BB:
+for.body:                                         ; preds = %for.cond
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+  store i32 1, i32* %arrayidx, align 4, !dbg !771
+  br label %for.inc, !dbg !772
+
+SUSAN: BB:
+for.inc:                                          ; preds = %for.body
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+  call void @llvm.dbg.value(metadata i32 undef, metadata !762, metadata !DIExpression(DW_OP_plus_uconst, 1, DW_OP_stack_value)), !dbg !764
+  br label %for.cond, !dbg !774, !llvm.loop !775
+
+SUSAN: BB:
+for.end:                                          ; preds = %for.cond
+  ret void, !dbg !777
+
+SUSAN: trying to get exit for loop: Loop at depth 1 containing: %for.cond<header><exiting>,%for.body,%for.inc<latch>
+
+SUSAN exitBB: 
+for.cond:                                         ; preds = %for.inc, %entry
+  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+  call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !762, metadata !DIExpression()), !dbg !764
+  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+  br i1 %cmp, label %for.body, label %for.end, !dbg !768
+
+SUSAN: entry block is a linear region! entry
+CBERegion: including entry in a linear region
+CBERegion: nextBB 
+entry:
+  call void @llvm.dbg.value(metadata i32* %v, metadata !759, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 %n, metadata !761, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 0, metadata !762, metadata !DIExpression()), !dbg !764
+  %0 = sext i32 %n to i64, !dbg !765
+  br label %for.cond, !dbg !765
+
+SUSAN: nextRegionEntryBB for.cond
+CBackend: entryBB is a loop: for.cond
+SUSAN: entry block is a loop region! for.cond
+creating loop region for entryBB: for.cond
+SUSAN: loop at 355 Loop at depth 1 containing: %for.cond<header><exiting>,%for.body,%for.inc<latch>
+
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+term 6818:   br i1 %cmp, label %for.body, label %for.end, !dbg !768
+CBERegion: startBB 393: 
+for.body:                                         ; preds = %for.cond
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+  store i32 1, i32* %arrayidx, align 4, !dbg !771
+  br label %for.inc, !dbg !772
+
+CBERegion: here? 149
+CBackend: entryBB is a loop: for.body
+but not a header!
+SUSAN: entry block is a linear region! for.body
+CBERegion: including for.body in a linear region
+CBERegion: nextBB 
+for.body:                                         ; preds = %for.cond
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+  store i32 1, i32* %arrayidx, align 4, !dbg !771
+  br label %for.inc, !dbg !772
+
+SUSAN: nextRegionEntryBB for.inc
+for region: Loop at depth 1 containing: %for.cond<header><exiting>,%for.body,%for.inc<latch>
+
+SUSAN: nextRegionEntryBB for.end
+SUSAN: entry block is a linear region! for.end
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+global: @_ZZ12sumReductionPiS_E11partial_sum = internal addrspace(3) global [256 x i32] undef, align 4, !dbg !0
+type: [256 x i32]
+global: @.str = private unnamed_addr constant [27 x i8] c"COMPLETED SUCCESSFULLY %d\0A\00", align 1
+type: [27 x i8]
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i32* %v, metadata !759, metadata !DIExpression()), !dbg !760
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i32 %n, metadata !761, metadata !DIExpression()), !dbg !760
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i32 0, metadata !762, metadata !DIExpression()), !dbg !764
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !762, metadata !DIExpression()), !dbg !764
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i32 undef, metadata !762, metadata !DIExpression(DW_OP_plus_uconst, 1, DW_OP_stack_value)), !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+========== IV MAP==========
+SUSAN: found LP for L:Loop at depth 1 containing: %for.cond<header><exiting>,%for.body,%for.inc<latch>
+
+currInst :  %0 = sext i32 %n to i64, !dbg !765
+currInst :  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+currInst :  br i1 %cmp, label %for.body, label %for.end, !dbg !768
+currInst :  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+currInst :  br i1 %cmp, label %for.body, label %for.end, !dbg !768
+currInst :  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+currInst :  store i32 1, i32* %arrayidx, align 4, !dbg !771
+LP->LV 1694:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+LP->L 1694: Loop at depth 1 containing: %for.cond<header><exiting>,%for.body,%for.inc<latch>
+
+nestlevel: i
+SUSAN: getting value name for: 
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @_Z17initialize_vectorPii(i32* %v, i32 %n) #2 !dbg !756 {
+entry:
+  call void @llvm.dbg.value(metadata i32* %v, metadata !759, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 %n, metadata !761, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 0, metadata !762, metadata !DIExpression()), !dbg !764
+  %0 = sext i32 %n to i64, !dbg !765
+  br label %for.cond, !dbg !765
+
+for.cond:                                         ; preds = %for.inc, %entry
+  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+  call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !762, metadata !DIExpression()), !dbg !764
+  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+  br i1 %cmp, label %for.body, label %for.end, !dbg !768
+
+for.body:                                         ; preds = %for.cond
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+  store i32 1, i32* %arrayidx, align 4, !dbg !771
+  br label %for.inc, !dbg !772
+
+for.inc:                                          ; preds = %for.body
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+  call void @llvm.dbg.value(metadata i32 undef, metadata !762, metadata !DIExpression(DW_OP_plus_uconst, 1, DW_OP_stack_value)), !dbg !764
+  br label %for.cond, !dbg !774, !llvm.loop !775
+
+for.end:                                          ; preds = %for.cond
+  ret void, !dbg !777
+}
+
+SUSAN: found argument 6346: i32* %v
+CBackend: varname: v
+  call void @llvm.dbg.value(metadata i32* %v, metadata !759, metadata !DIExpression()), !dbg !760
+SUSAN: found argument 6346: i32 %n
+CBackend: varname: n
+  call void @llvm.dbg.value(metadata i32 %n, metadata !761, metadata !DIExpression()), !dbg !760
+SUSAN: getting value name for:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+inst from IRNaming:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+original name : i
+returning name: i
+SUSAN: phi related name: i
+=========================SUSAN: IR NAMING BEFORE=====================
+i32* %v -> v
+i32 %n -> n
+  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764 -> i
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773 -> i
+SUSAN: inst:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+i:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: inst:  call void @llvm.dbg.value(metadata i32* %v, metadata !759, metadata !DIExpression()), !dbg !760
+SUSAN: inst:  call void @llvm.dbg.value(metadata i32 %n, metadata !761, metadata !DIExpression()), !dbg !760
+SUSAN: inst:  call void @llvm.dbg.value(metadata i32 0, metadata !762, metadata !DIExpression()), !dbg !764
+SUSAN: inst:  %0 = sext i32 %n to i64, !dbg !765
+SUSAN: inst:  br label %for.cond, !dbg !765
+SUSAN: inst:  call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !762, metadata !DIExpression()), !dbg !764
+i:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: inst:  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+i:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: inst:  br i1 %cmp, label %for.body, label %for.end, !dbg !768
+i:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: inst:  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+i:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: inst:  store i32 1, i32* %arrayidx, align 4, !dbg !771
+i:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: inst:  br label %for.inc, !dbg !772
+i:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: inst:  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+i:  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+SUSAN: inst:  call void @llvm.dbg.value(metadata i32 undef, metadata !762, metadata !DIExpression(DW_OP_plus_uconst, 1, DW_OP_stack_value)), !dbg !764
+i:  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+SUSAN: inst:  br label %for.cond, !dbg !774, !llvm.loop !775
+i:  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+SUSAN: inst:  ret void, !dbg !777
+i:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+=========================SUSAN: IR NAMING=====================
+i32* %v -> v
+i32 %n -> n
+  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764 -> i
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773 -> i
+SUSAN: getting value name for: i32* %v
+inst from IRNaming: i32* %v
+original name : v
+returning name: v
+SUSAN: getting value name for: i32 %n
+inst from IRNaming: i32 %n
+original name : n
+returning name: n
+SUSAN: getting value name for:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+inst from IRNaming:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+original name : i
+returning name: i
+SUSAN: declaring varName 5298: i
+SUSAN: declared locals:
+SUSAN: declaring 3252:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: getting value name for:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+inst from IRNaming:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+original name : i
+returning name: i
+SUSAN: declaring with reconstructed name 3286: i
+SUSAN: inst at 5950:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: declaring   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: printing type at 5937: i64
+SUSAN: getting value name for:   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+inst from IRNaming:   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+original name : i
+returning name: i
+SUSAN: declaring varName 5298: i
+SUSAN: am I here 6807??
+Linear Region with entry block: entry
+SUSAN: printing bb:entry
+CBEBackend: printing bb 7082 entry
+printing unconditional branch   br label %for.cond, !dbg !765
+Loop Region with entry block: for.cond
+term 6818:   br i1 %cmp, label %for.body, label %for.end, !dbg !768
+SUSAN: condrelatedinst:  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: condrelatedinst:  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: declaring 3252:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: getting value name for:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+inst from IRNaming:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+original name : i
+returning name: i
+SUSAN: declaring with reconstructed name 3286: i
+CBackend: writeOperand 3595: i64 0
+CBackend: writeoperand here 3674? 
+SUSAN: getting value name for:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+inst from IRNaming:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+original name : i
+returning name: i
+SUSAN: visiting cast:   %0 = sext i32 %n to i64, !dbg !765
+CBackend: writeOperand 3595: i32 %n
+SUSAN: getting value name for: i32 %n
+inst from IRNaming: i32 %n
+original name : n
+returning name: n
+CBackend: writeoperand here 3674? 
+SUSAN: declaring 3252:   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+SUSAN: getting value name for:   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+inst from IRNaming:   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+original name : i
+returning name: i
+SUSAN: declaring with reconstructed name 3286: i
+SUSAN: getting value name for:   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+inst from IRNaming:   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+original name : i
+returning name: i
+CBackend: writeOperand 3595:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: getting value name for:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+inst from IRNaming:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+original name : i
+returning name: i
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i64 1
+CBackend: writeoperand here 3674? 
+Linear Region with entry block: for.body
+SUSAN: printing bb:for.body
+CBEBackend: printing bb 7082 for.body
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: printing instruction   store i32 1, i32* %arrayidx, align 4, !dbg !771 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %arrayidx, align 4, !dbg !771
+CBackend: here? 10442
+SUSAN: GEPINST:   %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+SUSAN: accessMemory true
+SUSAN: first index is integer/pointertype type
+SUSAN: writing ptr 10000:i32* %v
+SUSAN: writing ptr 9994: i32* %v
+SUSAN: getting value name for: i32* %v
+inst from IRNaming: i32* %v
+original name : v
+returning name: v
+CBackend: writeOperand 3595:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: getting value name for:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+inst from IRNaming:   %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+original name : i
+returning name: i
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+CBackend: writeoperand here 3674? 
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+printing unconditional branch   br label %for.inc, !dbg !772
+CBERegion: printing latchBB for.inc
+CBERegion: I 316:   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+CBERegion: I 316:   call void @llvm.dbg.value(metadata i32 undef, metadata !762, metadata !DIExpression(DW_OP_plus_uconst, 1, DW_OP_stack_value)), !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+CBERegion: I 316:   br label %for.cond, !dbg !774, !llvm.loop !775
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+SUSAN: found IV 784  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+Linear Region with entry block: for.end
+SUSAN: printing bb:for.end
+CBEBackend: printing bb 7082 for.end
+CBackend: iterating function 1759: main
+CBackend: printing function 1770main
+CBackend: here? 1175
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+term 6818:   br i1 %exitcond, label %kcall.configok13, label %kcall.end14, !tulip.doall.loop.block !767
+none omp loop ub: i32 256
+CBackend: here? 1175
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+term 6818:   br i1 %exitcond17, label %header.1.preheader, label %kcall.end, !tulip.doall.loop.grid !767
+none omp loop ub:   %div = sdiv i32 65536, 256, !dbg !770
+CBackend: here? 1175
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+term 6818:   br i1 %exitcond16, label %kcall.configok, label %latch.0, !tulip.doall.loop.block !767
+none omp loop ub: i32 256
+=========LOOP PROFILES=========
+Loop: Loop at depth 1 containing: %header.0<header><exiting>,%header.1.preheader,%header.1,%latch.0<latch>,%kcall.configok,%latch.1
+    Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+isomp: 0
+Loop: Loop at depth 1 containing: %header.011<header><exiting>,%kcall.configok13,%latch.012<latch>
+
+isomp: 0
+Loop: Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+isomp: 0
+SUSAN: opnd0  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: opnd1  %div = sdiv i32 65536, 256, !dbg !770
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: opnd0  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: opnd1i32 256
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: opnd0  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: opnd1i32 256
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: BB:
+entry:
+  %agg.tmp = alloca %struct.dim3, align 4
+  %agg.tmp7 = alloca %struct.dim3, align 4
+  %agg.tmp.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp9 = alloca %struct.dim3, align 4
+  %agg.tmp10 = alloca %struct.dim3, align 4
+  %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+  call void @llvm.dbg.value(metadata i32 65536, metadata !757, metadata !DIExpression()), !dbg !758
+  %conv = sext i32 65536 to i64, !dbg !759
+  %mul = mul i64 %conv, 4, !dbg !760
+  %conv1 = trunc i64 %mul to i32, !dbg !759
+  call void @llvm.dbg.value(metadata i32 %conv1, metadata !761, metadata !DIExpression()), !dbg !758
+  call void @_Z17initialize_vectorPii(i32* undef, i32 65536), !dbg !762
+  %0 = bitcast i32* undef to i8*, !dbg !763
+  %1 = bitcast i32* undef to i8*, !dbg !764
+  %conv5 = sext i32 %conv1 to i64, !dbg !765
+  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+  call void @llvm.dbg.value(metadata i32 256, metadata !768, metadata !DIExpression()), !dbg !758
+  %div = sdiv i32 65536, 256, !dbg !770
+  call void @llvm.dbg.value(metadata i32 %div, metadata !771, metadata !DIExpression()), !dbg !758
+  %dim3gep.0 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 0
+  store i32 %div, i32* %dim3gep.0
+  %dim3gep.1 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 1
+  store i32 1, i32* %dim3gep.1
+  %dim3gep.2 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 2
+  store i32 1, i32* %dim3gep.2
+  %dim3gep.01 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 0
+  store i32 256, i32* %dim3gep.01
+  %dim3gep.12 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 1
+  store i32 1, i32* %dim3gep.12
+  %dim3gep.23 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 2
+  store i32 1, i32* %dim3gep.23
+  %2 = bitcast { i64, i32 }* %agg.tmp.coerce to i8*, !dbg !772
+  %3 = bitcast %struct.dim3* %agg.tmp to i8*, !dbg !772
+  %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+  %5 = bitcast { i64, i32 }* %agg.tmp7.coerce to i8*, !dbg !772
+  %6 = bitcast %struct.dim3* %agg.tmp7 to i8*, !dbg !772
+  %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+  br label %header.0
+
+SUSAN: BB:
+header.0:                                         ; preds = %latch.0, %entry
+  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+  %exitcond17 = icmp ne i32 %indvar.0, %div
+  br i1 %exitcond17, label %header.1.preheader, label %kcall.end, !tulip.doall.loop.grid !767
+
+SUSAN: BB:
+header.1.preheader:                               ; preds = %header.0
+  br label %header.1
+
+SUSAN: BB:
+header.1:                                         ; preds = %header.1.preheader, %latch.1
+  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+  %exitcond16 = icmp ne i32 %indvar.1, 256
+  br i1 %exitcond16, label %kcall.configok, label %latch.0, !tulip.doall.loop.block !767
+
+SUSAN: BB:
+latch.1:                                          ; preds = %kcall.configok
+  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+  br label %header.1
+
+SUSAN: BB:
+latch.0:                                          ; preds = %header.1
+  %indvar.next.0 = add i32 %indvar.0, 1
+  br label %header.0
+
+SUSAN: BB:
+kcall.configok:                                   ; preds = %header.1
+  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 %div, i32 1, i32 1, i32 256, i32 1, i32 1, i32 %indvar.0, i32 0, i32 0, i32 %indvar.1, i32 0, i32 0)
+  br label %latch.1
+
+SUSAN: BB:
+kcall.end:                                        ; preds = %header.0
+  %dim3gep.04 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 0
+  store i32 1, i32* %dim3gep.04
+  %dim3gep.15 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 1
+  store i32 1, i32* %dim3gep.15
+  %dim3gep.26 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 2
+  store i32 1, i32* %dim3gep.26
+  %dim3gep.07 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 0
+  store i32 256, i32* %dim3gep.07
+  %dim3gep.18 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 1
+  store i32 1, i32* %dim3gep.18
+  %dim3gep.29 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 2
+  store i32 1, i32* %dim3gep.29
+  %8 = bitcast { i64, i32 }* %agg.tmp9.coerce to i8*, !dbg !773
+  %9 = bitcast %struct.dim3* %agg.tmp9 to i8*, !dbg !773
+  %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+  %11 = bitcast { i64, i32 }* %agg.tmp10.coerce to i8*, !dbg !773
+  %12 = bitcast %struct.dim3* %agg.tmp10 to i8*, !dbg !773
+  %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+  br label %header.011
+
+SUSAN: BB:
+header.011:                                       ; preds = %latch.012, %kcall.end
+  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+  %exitcond = icmp ne i32 %indvar.013, 256
+  br i1 %exitcond, label %kcall.configok13, label %kcall.end14, !tulip.doall.loop.block !767
+
+SUSAN: BB:
+latch.012:                                        ; preds = %kcall.configok13
+  %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+  br label %header.011
+
+SUSAN: BB:
+kcall.configok13:                                 ; preds = %header.011
+  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 1, i32 1, i32 1, i32 256, i32 1, i32 1, i32 0, i32 0, i32 0, i32 %indvar.013, i32 0, i32 0)
+  br label %latch.012
+
+SUSAN: BB:
+kcall.end14:                                      ; preds = %header.011
+  %14 = bitcast i32* undef to i8*, !dbg !774
+  %15 = bitcast i32* undef to i8*, !dbg !775
+  %conv15 = sext i32 %conv1 to i64, !dbg !776
+  %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+  %arrayidx = getelementptr inbounds i32, i32* undef, i64 0, !dbg !778
+  %16 = load i32, i32* %arrayidx, align 4, !dbg !778
+  %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+  ret i32 0, !dbg !780
+
+SUSAN: trying to get exit for loop: Loop at depth 1 containing: %header.0<header><exiting>,%header.1.preheader,%header.1,%latch.0<latch>,%kcall.configok,%latch.1
+    Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+SUSAN exitBB: 
+header.0:                                         ; preds = %latch.0, %entry
+  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+  %exitcond17 = icmp ne i32 %indvar.0, %div
+  br i1 %exitcond17, label %header.1.preheader, label %kcall.end, !tulip.doall.loop.grid !767
+
+SUSAN: trying to get exit for loop: Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+SUSAN exitBB: 
+header.1:                                         ; preds = %header.1.preheader, %latch.1
+  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+  %exitcond16 = icmp ne i32 %indvar.1, 256
+  br i1 %exitcond16, label %kcall.configok, label %latch.0, !tulip.doall.loop.block !767
+
+SUSAN: trying to get exit for loop: Loop at depth 1 containing: %header.011<header><exiting>,%kcall.configok13,%latch.012<latch>
+
+SUSAN exitBB: 
+header.011:                                       ; preds = %latch.012, %kcall.end
+  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+  %exitcond = icmp ne i32 %indvar.013, 256
+  br i1 %exitcond, label %kcall.configok13, label %kcall.end14, !tulip.doall.loop.block !767
+
+SUSAN: entry block is a linear region! entry
+CBERegion: including entry in a linear region
+CBERegion: nextBB 
+entry:
+  %agg.tmp = alloca %struct.dim3, align 4
+  %agg.tmp7 = alloca %struct.dim3, align 4
+  %agg.tmp.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp9 = alloca %struct.dim3, align 4
+  %agg.tmp10 = alloca %struct.dim3, align 4
+  %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+  call void @llvm.dbg.value(metadata i32 65536, metadata !757, metadata !DIExpression()), !dbg !758
+  %conv = sext i32 65536 to i64, !dbg !759
+  %mul = mul i64 %conv, 4, !dbg !760
+  %conv1 = trunc i64 %mul to i32, !dbg !759
+  call void @llvm.dbg.value(metadata i32 %conv1, metadata !761, metadata !DIExpression()), !dbg !758
+  call void @_Z17initialize_vectorPii(i32* undef, i32 65536), !dbg !762
+  %0 = bitcast i32* undef to i8*, !dbg !763
+  %1 = bitcast i32* undef to i8*, !dbg !764
+  %conv5 = sext i32 %conv1 to i64, !dbg !765
+  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+  call void @llvm.dbg.value(metadata i32 256, metadata !768, metadata !DIExpression()), !dbg !758
+  %div = sdiv i32 65536, 256, !dbg !770
+  call void @llvm.dbg.value(metadata i32 %div, metadata !771, metadata !DIExpression()), !dbg !758
+  %dim3gep.0 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 0
+  store i32 %div, i32* %dim3gep.0
+  %dim3gep.1 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 1
+  store i32 1, i32* %dim3gep.1
+  %dim3gep.2 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 2
+  store i32 1, i32* %dim3gep.2
+  %dim3gep.01 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 0
+  store i32 256, i32* %dim3gep.01
+  %dim3gep.12 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 1
+  store i32 1, i32* %dim3gep.12
+  %dim3gep.23 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 2
+  store i32 1, i32* %dim3gep.23
+  %2 = bitcast { i64, i32 }* %agg.tmp.coerce to i8*, !dbg !772
+  %3 = bitcast %struct.dim3* %agg.tmp to i8*, !dbg !772
+  %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+  %5 = bitcast { i64, i32 }* %agg.tmp7.coerce to i8*, !dbg !772
+  %6 = bitcast %struct.dim3* %agg.tmp7 to i8*, !dbg !772
+  %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+  br label %header.0
+
+SUSAN: nextRegionEntryBB header.0
+CBackend: entryBB is a loop: header.0
+SUSAN: entry block is a loop region! header.0
+creating loop region for entryBB: header.0
+SUSAN: loop at 355 Loop at depth 1 containing: %header.0<header><exiting>,%header.1.preheader,%header.1,%latch.0<latch>,%kcall.configok,%latch.1
+    Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+term 6818:   br i1 %exitcond17, label %header.1.preheader, label %kcall.end, !tulip.doall.loop.grid !767
+CBERegion: startBB 393: 
+header.1.preheader:                               ; preds = %header.0
+  br label %header.1
+
+CBERegion: here? 149
+CBackend: entryBB is a loop: header.1.preheader
+but not a header!
+SUSAN: entry block is a linear region! header.1.preheader
+CBERegion: including header.1.preheader in a linear region
+CBERegion: nextBB 
+header.1.preheader:                               ; preds = %header.0
+  br label %header.1
+
+SUSAN: nextRegionEntryBB header.1
+for region: Loop at depth 1 containing: %header.0<header><exiting>,%header.1.preheader,%header.1,%latch.0<latch>,%kcall.configok,%latch.1
+    Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+CBERegion: here? 149
+CBackend: entryBB is a loop: header.1
+SUSAN: entry block is a loop region! header.1
+creating loop region for entryBB: header.1
+SUSAN: loop at 355 Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+term 6818:   br i1 %exitcond16, label %kcall.configok, label %latch.0, !tulip.doall.loop.block !767
+CBERegion: startBB 393: 
+kcall.configok:                                   ; preds = %header.1
+  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 %div, i32 1, i32 1, i32 256, i32 1, i32 1, i32 %indvar.0, i32 0, i32 0, i32 %indvar.1, i32 0, i32 0)
+  br label %latch.1
+
+CBERegion: here? 149
+CBackend: entryBB is a loop: kcall.configok
+but not a header!
+SUSAN: entry block is a linear region! kcall.configok
+CBERegion: including kcall.configok in a linear region
+CBERegion: nextBB 
+kcall.configok:                                   ; preds = %header.1
+  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 %div, i32 1, i32 1, i32 256, i32 1, i32 1, i32 %indvar.0, i32 0, i32 0, i32 %indvar.1, i32 0, i32 0)
+  br label %latch.1
+
+SUSAN: nextRegionEntryBB latch.1
+for region: Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+SUSAN: nextRegionEntryBB latch.0
+for region: Loop at depth 1 containing: %header.0<header><exiting>,%header.1.preheader,%header.1,%latch.0<latch>,%kcall.configok,%latch.1
+    Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+SUSAN: nextRegionEntryBB kcall.end
+SUSAN: entry block is a linear region! kcall.end
+CBERegion: including kcall.end in a linear region
+CBERegion: nextBB 
+kcall.end:                                        ; preds = %header.0
+  %dim3gep.04 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 0
+  store i32 1, i32* %dim3gep.04
+  %dim3gep.15 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 1
+  store i32 1, i32* %dim3gep.15
+  %dim3gep.26 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 2
+  store i32 1, i32* %dim3gep.26
+  %dim3gep.07 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 0
+  store i32 256, i32* %dim3gep.07
+  %dim3gep.18 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 1
+  store i32 1, i32* %dim3gep.18
+  %dim3gep.29 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 2
+  store i32 1, i32* %dim3gep.29
+  %8 = bitcast { i64, i32 }* %agg.tmp9.coerce to i8*, !dbg !773
+  %9 = bitcast %struct.dim3* %agg.tmp9 to i8*, !dbg !773
+  %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+  %11 = bitcast { i64, i32 }* %agg.tmp10.coerce to i8*, !dbg !773
+  %12 = bitcast %struct.dim3* %agg.tmp10 to i8*, !dbg !773
+  %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+  br label %header.011
+
+SUSAN: nextRegionEntryBB header.011
+CBackend: entryBB is a loop: header.011
+SUSAN: entry block is a loop region! header.011
+creating loop region for entryBB: header.011
+SUSAN: loop at 355 Loop at depth 1 containing: %header.011<header><exiting>,%kcall.configok13,%latch.012<latch>
+
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+term 6818:   br i1 %exitcond, label %kcall.configok13, label %kcall.end14, !tulip.doall.loop.block !767
+CBERegion: startBB 393: 
+kcall.configok13:                                 ; preds = %header.011
+  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 1, i32 1, i32 1, i32 256, i32 1, i32 1, i32 0, i32 0, i32 0, i32 %indvar.013, i32 0, i32 0)
+  br label %latch.012
+
+CBERegion: here? 149
+CBackend: entryBB is a loop: kcall.configok13
+but not a header!
+SUSAN: entry block is a linear region! kcall.configok13
+CBERegion: including kcall.configok13 in a linear region
+CBERegion: nextBB 
+kcall.configok13:                                 ; preds = %header.011
+  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 1, i32 1, i32 1, i32 256, i32 1, i32 1, i32 0, i32 0, i32 0, i32 %indvar.013, i32 0, i32 0)
+  br label %latch.012
+
+SUSAN: nextRegionEntryBB latch.012
+for region: Loop at depth 1 containing: %header.011<header><exiting>,%kcall.configok13,%latch.012<latch>
+
+SUSAN: nextRegionEntryBB kcall.end14
+SUSAN: entry block is a linear region! kcall.end14
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i32 65536, metadata !779, metadata !DIExpression()), !dbg !780
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i32 %conv1, metadata !783, metadata !DIExpression()), !dbg !780
+SUSAN: CI at 1400:   call void @_Z17initialize_vectorPii(i32* undef, i32 65536), !dbg !762
+SUSAN: CI at 1400:   %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i32 256, metadata !790, metadata !DIExpression()), !dbg !780
+SUSAN: CI at 1400:   call void @llvm.dbg.value(metadata i32 %div, metadata !793, metadata !DIExpression()), !dbg !780
+SUSAN: CI at 1400:   %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+SUSAN: CI at 1400:   %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+SUSAN: CI at 1400:   call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 %div, i32 1, i32 1, i32 256, i32 1, i32 1, i32 %indvar.0, i32 0, i32 0, i32 %indvar.1, i32 0, i32 0)
+SUSAN: CI at 1400:   %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+SUSAN: CI at 1400:   %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+SUSAN: CI at 1400:   call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 1, i32 1, i32 1, i32 256, i32 1, i32 1, i32 0, i32 0, i32 0, i32 %indvar.013, i32 0, i32 0)
+SUSAN: CI at 1400:   %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+SUSAN: CI at 1400:   %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+========== IV MAP==========
+SUSAN: found LP for L:Loop at depth 1 containing: %header.011<header><exiting>,%kcall.configok13,%latch.012<latch>
+
+SUSAN: found LP for L:Loop at depth 1 containing: %header.0<header><exiting>,%header.1.preheader,%header.1,%latch.0<latch>,%kcall.configok,%latch.1
+    Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+SUSAN: found LP for L:Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+currInst :  %agg.tmp.coerce = alloca { i64, i32 }, align 4
+currInst :  %2 = bitcast { i64, i32 }* %agg.tmp.coerce to i8*, !dbg !772
+currInst :  %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+currInst :  %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+currInst :  %5 = bitcast { i64, i32 }* %agg.tmp7.coerce to i8*, !dbg !772
+currInst :  %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+currInst :  %conv = sext i32 65536 to i64, !dbg !759
+currInst :  %mul = mul i64 %conv, 4, !dbg !760
+currInst :  %conv1 = trunc i64 %mul to i32, !dbg !759
+currInst :  %conv5 = sext i32 %conv1 to i64, !dbg !765
+currInst :  %conv15 = sext i32 %conv1 to i64, !dbg !776
+currInst :  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+currInst :  %mul = mul i64 %conv, 4, !dbg !760
+currInst :  %conv1 = trunc i64 %mul to i32, !dbg !759
+currInst :  %conv5 = sext i32 %conv1 to i64, !dbg !765
+currInst :  %conv15 = sext i32 %conv1 to i64, !dbg !776
+currInst :  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+currInst :  %conv1 = trunc i64 %mul to i32, !dbg !759
+currInst :  %conv5 = sext i32 %conv1 to i64, !dbg !765
+currInst :  %conv15 = sext i32 %conv1 to i64, !dbg !776
+currInst :  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+currInst :  %0 = bitcast i32* undef to i8*, !dbg !763
+currInst :  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+currInst :  %1 = bitcast i32* undef to i8*, !dbg !764
+currInst :  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+currInst :  %conv5 = sext i32 %conv1 to i64, !dbg !765
+currInst :  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+currInst :  %dim3gep.0 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 0
+currInst :  store i32 %div, i32* %dim3gep.0
+currInst :  %dim3gep.1 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 1
+currInst :  store i32 1, i32* %dim3gep.1
+currInst :  %dim3gep.2 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 2
+currInst :  store i32 1, i32* %dim3gep.2
+currInst :  %dim3gep.01 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 0
+currInst :  store i32 256, i32* %dim3gep.01
+currInst :  %dim3gep.12 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 1
+currInst :  store i32 1, i32* %dim3gep.12
+currInst :  %dim3gep.23 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 2
+currInst :  store i32 1, i32* %dim3gep.23
+currInst :  %2 = bitcast { i64, i32 }* %agg.tmp.coerce to i8*, !dbg !772
+currInst :  %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+currInst :  %3 = bitcast %struct.dim3* %agg.tmp to i8*, !dbg !772
+currInst :  %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+currInst :  %5 = bitcast { i64, i32 }* %agg.tmp7.coerce to i8*, !dbg !772
+currInst :  %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+currInst :  %6 = bitcast %struct.dim3* %agg.tmp7 to i8*, !dbg !772
+currInst :  %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+currInst :  %exitcond17 = icmp ne i32 %indvar.0, %div
+currInst :  br i1 %exitcond17, label %header.1.preheader, label %kcall.end, !tulip.doall.loop.grid !767
+currInst :  %exitcond16 = icmp ne i32 %indvar.1, 256
+currInst :  br i1 %exitcond16, label %kcall.configok, label %latch.0, !tulip.doall.loop.block !767
+currInst :  %dim3gep.04 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 0
+currInst :  store i32 1, i32* %dim3gep.04
+currInst :  %dim3gep.15 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 1
+currInst :  store i32 1, i32* %dim3gep.15
+currInst :  %dim3gep.26 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 2
+currInst :  store i32 1, i32* %dim3gep.26
+currInst :  %dim3gep.07 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 0
+currInst :  store i32 256, i32* %dim3gep.07
+currInst :  %dim3gep.18 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 1
+currInst :  store i32 1, i32* %dim3gep.18
+currInst :  %dim3gep.29 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 2
+currInst :  store i32 1, i32* %dim3gep.29
+currInst :  %8 = bitcast { i64, i32 }* %agg.tmp9.coerce to i8*, !dbg !773
+currInst :  %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+currInst :  %9 = bitcast %struct.dim3* %agg.tmp9 to i8*, !dbg !773
+currInst :  %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+currInst :  %11 = bitcast { i64, i32 }* %agg.tmp10.coerce to i8*, !dbg !773
+currInst :  %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+currInst :  %12 = bitcast %struct.dim3* %agg.tmp10 to i8*, !dbg !773
+currInst :  %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+currInst :  %exitcond = icmp ne i32 %indvar.013, 256
+currInst :  br i1 %exitcond, label %kcall.configok13, label %kcall.end14, !tulip.doall.loop.block !767
+currInst :  %14 = bitcast i32* undef to i8*, !dbg !774
+currInst :  %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+currInst :  %15 = bitcast i32* undef to i8*, !dbg !775
+currInst :  %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+currInst :  %conv15 = sext i32 %conv1 to i64, !dbg !776
+currInst :  %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+currInst :  %arrayidx = getelementptr inbounds i32, i32* undef, i64 0, !dbg !778
+currInst :  %16 = load i32, i32* %arrayidx, align 4, !dbg !778
+currInst :  %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+currInst :  %16 = load i32, i32* %arrayidx, align 4, !dbg !778
+currInst :  %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+LP->LV 1694:   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+LP->L 1694: Loop at depth 1 containing: %header.0<header><exiting>,%header.1.preheader,%header.1,%latch.0<latch>,%kcall.configok,%latch.1
+    Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+nestlevel: i
+LP->LV 1694:   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+LP->L 1694: Loop at depth 1 containing: %header.011<header><exiting>,%kcall.configok13,%latch.012<latch>
+
+nestlevel: i
+LP->LV 1694:   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+LP->L 1694: Loop at depth 2 containing: %header.1<header><exiting>,%kcall.configok,%latch.1<latch>
+
+nestlevel: j
+SUSAN: getting value name for: 
+; Function Attrs: noinline norecurse uwtable
+define dso_local i32 @main() #3 !dbg !778 {
+entry:
+  %agg.tmp = alloca %struct.dim3, align 4
+  %agg.tmp7 = alloca %struct.dim3, align 4
+  %agg.tmp.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp9 = alloca %struct.dim3, align 4
+  %agg.tmp10 = alloca %struct.dim3, align 4
+  %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+  %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+  call void @llvm.dbg.value(metadata i32 65536, metadata !779, metadata !DIExpression()), !dbg !780
+  %conv = sext i32 65536 to i64, !dbg !781
+  %mul = mul i64 %conv, 4, !dbg !782
+  %conv1 = trunc i64 %mul to i32, !dbg !781
+  call void @llvm.dbg.value(metadata i32 %conv1, metadata !783, metadata !DIExpression()), !dbg !780
+  call void @_Z17initialize_vectorPii(i32* undef, i32 65536), !dbg !784
+  %0 = bitcast i32* undef to i8*, !dbg !785
+  %1 = bitcast i32* undef to i8*, !dbg !786
+  %conv5 = sext i32 %conv1 to i64, !dbg !787
+  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !788, !tulip.target.start.of.map !789
+  call void @llvm.dbg.value(metadata i32 256, metadata !790, metadata !DIExpression()), !dbg !780
+  %div = sdiv i32 65536, 256, !dbg !792
+  call void @llvm.dbg.value(metadata i32 %div, metadata !793, metadata !DIExpression()), !dbg !780
+  %dim3gep.0 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 0
+  store i32 %div, i32* %dim3gep.0
+  %dim3gep.1 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 1
+  store i32 1, i32* %dim3gep.1
+  %dim3gep.2 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 2
+  store i32 1, i32* %dim3gep.2
+  %dim3gep.01 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 0
+  store i32 256, i32* %dim3gep.01
+  %dim3gep.12 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 1
+  store i32 1, i32* %dim3gep.12
+  %dim3gep.23 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 2
+  store i32 1, i32* %dim3gep.23
+  %2 = bitcast { i64, i32 }* %agg.tmp.coerce to i8*, !dbg !794
+  %3 = bitcast %struct.dim3* %agg.tmp to i8*, !dbg !794
+  %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !794
+  %5 = bitcast { i64, i32 }* %agg.tmp7.coerce to i8*, !dbg !794
+  %6 = bitcast %struct.dim3* %agg.tmp7 to i8*, !dbg !794
+  %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !794
+  br label %header.0
+
+header.0:                                         ; preds = %latch.0, %entry
+  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+  %exitcond17 = icmp ne i32 %indvar.0, %div
+  br i1 %exitcond17, label %header.1.preheader, label %kcall.end, !tulip.doall.loop.grid !789
+
+header.1.preheader:                               ; preds = %header.0
+  br label %header.1
+
+header.1:                                         ; preds = %header.1.preheader, %latch.1
+  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+  %exitcond16 = icmp ne i32 %indvar.1, 256
+  br i1 %exitcond16, label %kcall.configok, label %latch.0, !tulip.doall.loop.block !789
+
+latch.1:                                          ; preds = %kcall.configok
+  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+  br label %header.1
+
+latch.0:                                          ; preds = %header.1
+  %indvar.next.0 = add i32 %indvar.0, 1
+  br label %header.0
+
+kcall.configok:                                   ; preds = %header.1
+  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 %div, i32 1, i32 1, i32 256, i32 1, i32 1, i32 %indvar.0, i32 0, i32 0, i32 %indvar.1, i32 0, i32 0)
+  br label %latch.1
+
+kcall.end:                                        ; preds = %header.0
+  %dim3gep.04 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 0
+  store i32 1, i32* %dim3gep.04
+  %dim3gep.15 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 1
+  store i32 1, i32* %dim3gep.15
+  %dim3gep.26 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 2
+  store i32 1, i32* %dim3gep.26
+  %dim3gep.07 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 0
+  store i32 256, i32* %dim3gep.07
+  %dim3gep.18 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 1
+  store i32 1, i32* %dim3gep.18
+  %dim3gep.29 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 2
+  store i32 1, i32* %dim3gep.29
+  %8 = bitcast { i64, i32 }* %agg.tmp9.coerce to i8*, !dbg !795
+  %9 = bitcast %struct.dim3* %agg.tmp9 to i8*, !dbg !795
+  %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !795
+  %11 = bitcast { i64, i32 }* %agg.tmp10.coerce to i8*, !dbg !795
+  %12 = bitcast %struct.dim3* %agg.tmp10 to i8*, !dbg !795
+  %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !795
+  br label %header.011
+
+header.011:                                       ; preds = %latch.012, %kcall.end
+  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+  %exitcond = icmp ne i32 %indvar.013, 256
+  br i1 %exitcond, label %kcall.configok13, label %kcall.end14, !tulip.doall.loop.block !789
+
+latch.012:                                        ; preds = %kcall.configok13
+  %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+  br label %header.011
+
+kcall.configok13:                                 ; preds = %header.011
+  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 1, i32 1, i32 1, i32 256, i32 1, i32 1, i32 0, i32 0, i32 0, i32 %indvar.013, i32 0, i32 0)
+  br label %latch.012
+
+kcall.end14:                                      ; preds = %header.011
+  %14 = bitcast i32* undef to i8*, !dbg !796
+  %15 = bitcast i32* undef to i8*, !dbg !797
+  %conv15 = sext i32 %conv1 to i64, !dbg !798
+  %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !799, !tulip.target.end.of.map !789
+  %arrayidx = getelementptr inbounds i32, i32* undef, i64 0, !dbg !800
+  %16 = load i32, i32* %arrayidx, align 4, !dbg !800
+  %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !801
+  ret i32 0, !dbg !802
+}
+
+SUSAN: found in IV2Name map   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+name:  i
+SUSAN: phi related name: i
+SUSAN: found in IV2Name map   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+name:  j
+SUSAN: phi related name: j
+SUSAN: found in IV2Name map   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+name:  i
+SUSAN: phi related name: i
+=========================SUSAN: IR NAMING BEFORE=====================
+  %mul = mul i64 %conv, 4, !dbg !760 -> bytes
+  %div = sdiv i32 65536, 256, !dbg !770 -> GRID_SIZE
+  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1 -> j
+  %indvar.next.0 = add i32 %indvar.0, 1 -> i
+  %indvar.next.015 = add nuw nsw i32 %indvar.013, 1 -> i
+SUSAN: inst:  %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %5 = bitcast { i64, i32 }* %agg.tmp7.coerce to i8*, !dbg !772
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %6 = bitcast %struct.dim3* %agg.tmp7 to i8*, !dbg !772
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  br label %header.0
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %exitcond17 = icmp ne i32 %indvar.0, %div
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br i1 %exitcond17, label %header.1.preheader, label %kcall.end, !tulip.doall.loop.grid !767
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br label %header.1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %exitcond16 = icmp ne i32 %indvar.1, 256
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: inst:  %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: inst:  %agg.tmp.coerce = alloca { i64, i32 }, align 4
+SUSAN: inst:  %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+SUSAN: inst:  %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: inst:  %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: inst:  %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+SUSAN: inst:  %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+SUSAN: inst:  call void @llvm.dbg.value(metadata i32 65536, metadata !779, metadata !DIExpression()), !dbg !780
+SUSAN: inst:  %conv = sext i32 65536 to i64, !dbg !759
+SUSAN: inst:  %mul = mul i64 %conv, 4, !dbg !760
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %conv1 = trunc i64 %mul to i32, !dbg !759
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  call void @llvm.dbg.value(metadata i32 %conv1, metadata !783, metadata !DIExpression()), !dbg !780
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  call void @_Z17initialize_vectorPii(i32* undef, i32 65536), !dbg !762
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %0 = bitcast i32* undef to i8*, !dbg !763
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %1 = bitcast i32* undef to i8*, !dbg !764
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %conv5 = sext i32 %conv1 to i64, !dbg !765
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  call void @llvm.dbg.value(metadata i32 256, metadata !790, metadata !DIExpression()), !dbg !780
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %div = sdiv i32 65536, 256, !dbg !770
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  call void @llvm.dbg.value(metadata i32 %div, metadata !793, metadata !DIExpression()), !dbg !780
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %dim3gep.0 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 0
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  store i32 %div, i32* %dim3gep.0
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %dim3gep.1 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  store i32 1, i32* %dim3gep.1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %dim3gep.2 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 2
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  store i32 1, i32* %dim3gep.2
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %dim3gep.01 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 0
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  store i32 256, i32* %dim3gep.01
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %dim3gep.12 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  store i32 1, i32* %dim3gep.12
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %dim3gep.23 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 2
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  store i32 1, i32* %dim3gep.23
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %2 = bitcast { i64, i32 }* %agg.tmp.coerce to i8*, !dbg !772
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %3 = bitcast %struct.dim3* %agg.tmp to i8*, !dbg !772
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  br i1 %exitcond16, label %kcall.configok, label %latch.0, !tulip.doall.loop.block !767
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br label %header.1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %indvar.next.0 = add i32 %indvar.0, 1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br label %header.0
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 %div, i32 1, i32 1, i32 256, i32 1, i32 1, i32 %indvar.0, i32 0, i32 0, i32 %indvar.1, i32 0, i32 0)
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br label %latch.1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %dim3gep.04 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 0
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  store i32 1, i32* %dim3gep.04
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %dim3gep.15 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  store i32 1, i32* %dim3gep.15
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %dim3gep.26 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 2
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  store i32 1, i32* %dim3gep.26
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %dim3gep.07 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 0
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  store i32 256, i32* %dim3gep.07
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %dim3gep.18 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  store i32 1, i32* %dim3gep.18
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %dim3gep.29 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 2
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  store i32 1, i32* %dim3gep.29
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %8 = bitcast { i64, i32 }* %agg.tmp9.coerce to i8*, !dbg !773
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %9 = bitcast %struct.dim3* %agg.tmp9 to i8*, !dbg !773
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %11 = bitcast { i64, i32 }* %agg.tmp10.coerce to i8*, !dbg !773
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %12 = bitcast %struct.dim3* %agg.tmp10 to i8*, !dbg !773
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br label %header.011
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %exitcond = icmp ne i32 %indvar.013, 256
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br i1 %exitcond, label %kcall.configok13, label %kcall.end14, !tulip.doall.loop.block !767
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br label %header.011
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 1, i32 1, i32 1, i32 256, i32 1, i32 1, i32 0, i32 0, i32 0, i32 %indvar.013, i32 0, i32 0)
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  br label %latch.012
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %14 = bitcast i32* undef to i8*, !dbg !774
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %15 = bitcast i32* undef to i8*, !dbg !775
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %conv15 = sext i32 %conv1 to i64, !dbg !776
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %arrayidx = getelementptr inbounds i32, i32* undef, i64 0, !dbg !778
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %16 = load i32, i32* %arrayidx, align 4, !dbg !778
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  ret i32 0, !dbg !780
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+SUSAN: inst:  %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+i:  %indvar.next.0 = add i32 %indvar.0, 1
+j:  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: inst:  %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+GRID_SIZE:  %div = sdiv i32 65536, 256, !dbg !770
+bytes:  %mul = mul i64 %conv, 4, !dbg !760
+=========================SUSAN: IR NAMING=====================
+  %mul = mul i64 %conv, 4, !dbg !760 -> bytes
+  %div = sdiv i32 65536, 256, !dbg !770 -> GRID_SIZE
+  %indvar.next.1 = add nuw nsw i32 %indvar.1, 1 -> j
+  %indvar.next.0 = add i32 %indvar.0, 1 -> i
+  %indvar.next.015 = add nuw nsw i32 %indvar.013, 1 -> i
+SUSAN: getting value name for:   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: declaring 3252:   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: declaring varName 5264: agg_2e_tmp
+SUSAN: printing type at 5885: %struct.dim3 = type { i32, i32, i32 }
+SUSAN: getting value name for:   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: declaring 3252:   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: declaring varName 5264: agg_2e_tmp7
+SUSAN: printing type at 5885: %struct.dim3 = type { i32, i32, i32 }
+SUSAN: getting value name for:   %agg.tmp.coerce = alloca { i64, i32 }, align 4
+SUSAN: declaring 3252:   %agg.tmp.coerce = alloca { i64, i32 }, align 4
+SUSAN: getting value name for:   %agg.tmp.coerce = alloca { i64, i32 }, align 4
+SUSAN: declaring varName 5264: agg_2e_tmp_2e_coerce
+SUSAN: printing type at 5885: { i64, i32 }
+SUSAN: getting value name for:   %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+SUSAN: declaring 3252:   %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+SUSAN: getting value name for:   %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+SUSAN: declaring varName 5264: agg_2e_tmp7_2e_coerce
+SUSAN: printing type at 5885: { i64, i32 }
+SUSAN: getting value name for:   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: declaring 3252:   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: declaring varName 5264: agg_2e_tmp9
+SUSAN: printing type at 5885: %struct.dim3 = type { i32, i32, i32 }
+SUSAN: getting value name for:   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: declaring 3252:   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: declaring varName 5264: agg_2e_tmp10
+SUSAN: printing type at 5885: %struct.dim3 = type { i32, i32, i32 }
+SUSAN: getting value name for:   %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+SUSAN: declaring 3252:   %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+SUSAN: getting value name for:   %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+SUSAN: declaring varName 5264: agg_2e_tmp9_2e_coerce
+SUSAN: printing type at 5885: { i64, i32 }
+SUSAN: getting value name for:   %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+SUSAN: declaring 3252:   %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+SUSAN: getting value name for:   %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+SUSAN: declaring varName 5264: agg_2e_tmp10_2e_coerce
+SUSAN: printing type at 5885: { i64, i32 }
+SUSAN: getting value name for:   %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+SUSAN: declaring varName 5298: call6
+SUSAN: declared locals:
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+SUSAN: declaring 3252:   %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+SUSAN: getting value name for:   %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+SUSAN: inst at 5950:   %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+SUSAN: declaring   %call6 = call i32 @cudaMemcpy(i8* %0, i8* %1, i64 %conv5, i32 1), !dbg !766, !tulip.target.start.of.map !767
+SUSAN: printing type at 5937: i32
+SUSAN: getting value name for:   %div = sdiv i32 65536, 256, !dbg !770
+inst from IRNaming:   %div = sdiv i32 65536, 256, !dbg !770
+original name : GRID_SIZE
+returning name: GRID_SIZE
+SUSAN: declaring varName 5298: GRID_SIZE
+SUSAN: declared locals:
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call6
+SUSAN: declaring 3252:   %div = sdiv i32 65536, 256, !dbg !770
+SUSAN: getting value name for:   %div = sdiv i32 65536, 256, !dbg !770
+inst from IRNaming:   %div = sdiv i32 65536, 256, !dbg !770
+original name : GRID_SIZE
+returning name: GRID_SIZE
+SUSAN: declaring with reconstructed name 3286: GRID_SIZE
+SUSAN: inst at 5950:   %div = sdiv i32 65536, 256, !dbg !770
+SUSAN: declaring   %div = sdiv i32 65536, 256, !dbg !770
+SUSAN: printing type at 5937: i32
+SUSAN: getting value name for:   %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+SUSAN: declaring varName 5298: _1
+SUSAN: declared locals:
+GRID_SIZE
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call6
+SUSAN: declaring 3252:   %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+SUSAN: getting value name for:   %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+SUSAN: inst at 5950:   %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+SUSAN: declaring   %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772
+SUSAN: printing type at 5937: i8*
+SUSAN: getting value name for:   %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+SUSAN: declaring varName 5298: _2
+SUSAN: declared locals:
+GRID_SIZE
+_1
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call6
+SUSAN: declaring 3252:   %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+SUSAN: getting value name for:   %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+SUSAN: inst at 5950:   %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+SUSAN: declaring   %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772
+SUSAN: printing type at 5937: i8*
+SUSAN: found in IV2Name map   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+name:  i
+SUSAN: declaring varName 5298: i
+SUSAN: declared locals:
+GRID_SIZE
+_1
+_2
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call6
+SUSAN: declaring 3252:   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found in IV2Name map   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+name:  i
+SUSAN: reconstructed variable counter increment for iv:i
+SUSAN: inst at 5950:   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: declaring   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: printing type at 5937: i32
+SUSAN: found in IV2Name map   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+name:  j
+SUSAN: declaring varName 5298: j
+SUSAN: declared locals:
+GRID_SIZE
+_1
+_2
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call6
+i
+SUSAN: declaring 3252:   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found in IV2Name map   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+name:  j
+SUSAN: reconstructed variable counter increment for iv:j
+SUSAN: inst at 5950:   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: declaring   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: printing type at 5937: i32
+SUSAN: getting value name for:   %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+inst from IRNaming:   %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+original name : j
+returning name: j
+SUSAN: declaring varName 5298: j
+SUSAN: getting value name for:   %indvar.next.0 = add i32 %indvar.0, 1
+inst from IRNaming:   %indvar.next.0 = add i32 %indvar.0, 1
+original name : i
+returning name: i
+SUSAN: declaring varName 5298: i
+SUSAN: getting value name for:   %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+SUSAN: declaring varName 5298: _3
+SUSAN: declared locals:
+GRID_SIZE
+_1
+_2
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call6
+i
+j
+SUSAN: declaring 3252:   %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+SUSAN: getting value name for:   %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+SUSAN: inst at 5950:   %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+SUSAN: declaring   %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773
+SUSAN: printing type at 5937: i8*
+SUSAN: getting value name for:   %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+SUSAN: declaring varName 5298: _4
+SUSAN: declared locals:
+GRID_SIZE
+_1
+_2
+_3
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call6
+i
+j
+SUSAN: declaring 3252:   %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+SUSAN: getting value name for:   %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+SUSAN: inst at 5950:   %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+SUSAN: declaring   %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773
+SUSAN: printing type at 5937: i8*
+SUSAN: found in IV2Name map   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+name:  i
+SUSAN: declaring varName 5298: i
+SUSAN: getting value name for:   %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+inst from IRNaming:   %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+original name : i
+returning name: i
+SUSAN: declaring varName 5298: i
+SUSAN: getting value name for:   %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+SUSAN: declaring varName 5298: call16
+SUSAN: declared locals:
+GRID_SIZE
+_1
+_2
+_3
+_4
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call6
+i
+j
+SUSAN: declaring 3252:   %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+SUSAN: getting value name for:   %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+SUSAN: inst at 5950:   %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+SUSAN: declaring   %call16 = call i32 @cudaMemcpy(i8* %14, i8* %15, i64 %conv15, i32 2), !dbg !777, !tulip.target.end.of.map !767
+SUSAN: printing type at 5937: i32
+SUSAN: getting value name for:   %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+SUSAN: declaring varName 5298: call17
+SUSAN: declared locals:
+GRID_SIZE
+_1
+_2
+_3
+_4
+agg_2e_tmp
+agg_2e_tmp10
+agg_2e_tmp10_2e_coerce
+agg_2e_tmp7
+agg_2e_tmp7_2e_coerce
+agg_2e_tmp9
+agg_2e_tmp9_2e_coerce
+agg_2e_tmp_2e_coerce
+call16
+call6
+i
+j
+SUSAN: declaring 3252:   %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+SUSAN: getting value name for:   %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+SUSAN: inst at 5950:   %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+SUSAN: declaring   %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779
+SUSAN: printing type at 5937: i32
+SUSAN: am I here 6807??
+Linear Region with entry block: entry
+SUSAN: printing bb:entry
+CBEBackend: printing bb 7082 entry
+SUSAN: printing instruction   call void @_Z17initialize_vectorPii(i32* undef, i32 65536), !dbg !762 at 6678
+CBackend: writeOperand 3595: 
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @_Z17initialize_vectorPii(i32* %v, i32 %n) #2 !dbg !756 {
+entry:
+  call void @llvm.dbg.value(metadata i32* %v, metadata !759, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 %n, metadata !761, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 0, metadata !762, metadata !DIExpression()), !dbg !764
+  %0 = sext i32 %n to i64, !dbg !765
+  br label %for.cond, !dbg !765
+
+for.cond:                                         ; preds = %for.inc, %entry
+  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+  call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !762, metadata !DIExpression()), !dbg !764
+  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+  br i1 %cmp, label %for.body, label %for.end, !dbg !768
+
+for.body:                                         ; preds = %for.cond
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+  store i32 1, i32* %arrayidx, align 4, !dbg !771
+  br label %for.inc, !dbg !772
+
+for.inc:                                          ; preds = %for.body
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+  call void @llvm.dbg.value(metadata i32 undef, metadata !762, metadata !DIExpression(DW_OP_plus_uconst, 1, DW_OP_stack_value)), !dbg !764
+  br label %for.cond, !dbg !774, !llvm.loop !775
+
+for.end:                                          ; preds = %for.cond
+  ret void, !dbg !777
+}
+
+SUSAN: getting value name for: 
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @_Z17initialize_vectorPii(i32* %v, i32 %n) #2 !dbg !756 {
+entry:
+  call void @llvm.dbg.value(metadata i32* %v, metadata !759, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 %n, metadata !761, metadata !DIExpression()), !dbg !760
+  call void @llvm.dbg.value(metadata i32 0, metadata !762, metadata !DIExpression()), !dbg !764
+  %0 = sext i32 %n to i64, !dbg !765
+  br label %for.cond, !dbg !765
+
+for.cond:                                         ; preds = %for.inc, %entry
+  %indvars.iv = phi i64 [ %indvars.iv.next, %for.inc ], [ 0, %entry ], !dbg !764
+  call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !762, metadata !DIExpression()), !dbg !764
+  %cmp = icmp slt i64 %indvars.iv, %0, !dbg !766
+  br i1 %cmp, label %for.body, label %for.end, !dbg !768
+
+for.body:                                         ; preds = %for.cond
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %indvars.iv, !dbg !769
+  store i32 1, i32* %arrayidx, align 4, !dbg !771
+  br label %for.inc, !dbg !772
+
+for.inc:                                          ; preds = %for.body
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !773
+  call void @llvm.dbg.value(metadata i32 undef, metadata !762, metadata !DIExpression(DW_OP_plus_uconst, 1, DW_OP_stack_value)), !dbg !764
+  br label %for.cond, !dbg !774, !llvm.loop !775
+
+for.end:                                          ; preds = %for.cond
+  ret void, !dbg !777
+}
+
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32* undef
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 65536
+CBackend: writeoperand here 3674? 
+SUSAN: printing instruction   %div = sdiv i32 65536, 256, !dbg !770 at 6678
+SUSAN: getting value name for:   %div = sdiv i32 65536, 256, !dbg !770
+inst from IRNaming:   %div = sdiv i32 65536, 256, !dbg !770
+original name : GRID_SIZE
+returning name: GRID_SIZE
+CBackend: writeOperand 3595: i32 65536
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 256
+CBackend: writeoperand here 3674? 
+SUSAN: printing instruction   store i32 %div, i32* %dim3gep.0 at 6678
+CBEBackend: printing store Inst:   store i32 %div, i32* %dim3gep.0
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.0 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 0
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.0 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 0
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595:   %div = sdiv i32 65536, 256, !dbg !770
+SUSAN: getting value name for:   %div = sdiv i32 65536, 256, !dbg !770
+inst from IRNaming:   %div = sdiv i32 65536, 256, !dbg !770
+original name : GRID_SIZE
+returning name: GRID_SIZE
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.1 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.1
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.1 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 1
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.1 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 1
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.2 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.2
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.2 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 2
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.2 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp, i32 0, i32 2
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 256, i32* %dim3gep.01 at 6678
+CBEBackend: printing store Inst:   store i32 256, i32* %dim3gep.01
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.01 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 0
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.01 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 0
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 256
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.12 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.12
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.12 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 1
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.12 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 1
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.23 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.23
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.23 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 2
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.23 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp7, i32 0, i32 2
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   %4 = call i8* @memcpy(i8* %2, i8* %3, i64 12), !dbg !772 at 6678
+CBackend: writeOperand 3595: 
+declare i8* @memcpy(i8*, i8*, i64)
+
+SUSAN: getting value name for: 
+declare i8* @memcpy(i8*, i8*, i64)
+
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %2 = bitcast { i64, i32 }* %agg.tmp.coerce to i8*, !dbg !772
+SUSAN: visiting cast:   %2 = bitcast { i64, i32 }* %agg.tmp.coerce to i8*, !dbg !772
+SUSAN: printing cast from: { i64, i32 }* to i8*
+CBackend: writeOperand 3595:   %agg.tmp.coerce = alloca { i64, i32 }, align 4
+SUSAN: getting value name for:   %agg.tmp.coerce = alloca { i64, i32 }, align 4
+CBackend: writeoperand here 3674? 
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %3 = bitcast %struct.dim3* %agg.tmp to i8*, !dbg !772
+SUSAN: visiting cast:   %3 = bitcast %struct.dim3* %agg.tmp to i8*, !dbg !772
+SUSAN: printing cast from: %struct.dim3* to i8*
+CBackend: writeOperand 3595:   %agg.tmp = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp = alloca %struct.dim3, align 4
+CBackend: writeoperand here 3674? 
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i64 12
+CBackend: writeoperand here 3674? 
+SUSAN: printing instruction   %7 = call i8* @memcpy(i8* %5, i8* %6, i64 12), !dbg !772 at 6678
+CBackend: writeOperand 3595: 
+declare i8* @memcpy(i8*, i8*, i64)
+
+SUSAN: getting value name for: 
+declare i8* @memcpy(i8*, i8*, i64)
+
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %5 = bitcast { i64, i32 }* %agg.tmp7.coerce to i8*, !dbg !772
+SUSAN: visiting cast:   %5 = bitcast { i64, i32 }* %agg.tmp7.coerce to i8*, !dbg !772
+SUSAN: printing cast from: { i64, i32 }* to i8*
+CBackend: writeOperand 3595:   %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+SUSAN: getting value name for:   %agg.tmp7.coerce = alloca { i64, i32 }, align 4
+CBackend: writeoperand here 3674? 
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %6 = bitcast %struct.dim3* %agg.tmp7 to i8*, !dbg !772
+SUSAN: visiting cast:   %6 = bitcast %struct.dim3* %agg.tmp7 to i8*, !dbg !772
+SUSAN: printing cast from: %struct.dim3* to i8*
+CBackend: writeOperand 3595:   %agg.tmp7 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp7 = alloca %struct.dim3, align 4
+CBackend: writeoperand here 3674? 
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i64 12
+CBackend: writeoperand here 3674? 
+printing unconditional branch   br label %header.0
+Loop Region with entry block: header.0
+term 6818:   br i1 %exitcond17, label %header.1.preheader, label %kcall.end, !tulip.doall.loop.grid !767
+SUSAN: condrelatedinst:  %exitcond17 = icmp ne i32 %indvar.0, %div
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: condrelatedinst:  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: declaring 3252:   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found in IV2Name map   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+name:  i
+SUSAN: reconstructed variable counter increment for iv:i
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+SUSAN: found in IV2Name map   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+name:  i
+SUSAN: getting value name for:   %div = sdiv i32 65536, 256, !dbg !770
+inst from IRNaming:   %div = sdiv i32 65536, 256, !dbg !770
+original name : GRID_SIZE
+returning name: GRID_SIZE
+SUSAN: declaring 3252:   %indvar.next.0 = add i32 %indvar.0, 1
+SUSAN: getting value name for:   %indvar.next.0 = add i32 %indvar.0, 1
+inst from IRNaming:   %indvar.next.0 = add i32 %indvar.0, 1
+original name : i
+returning name: i
+SUSAN: declaring with reconstructed name 3286: i
+SUSAN: getting value name for:   %indvar.next.0 = add i32 %indvar.0, 1
+inst from IRNaming:   %indvar.next.0 = add i32 %indvar.0, 1
+original name : i
+returning name: i
+CBackend: writeOperand 3595:   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found in IV2Name map   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+name:  i
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+Linear Region with entry block: header.1.preheader
+SUSAN: printing bb:header.1.preheader
+CBEBackend: printing bb 7082 header.1.preheader
+printing unconditional branch   br label %header.1
+Loop Region with entry block: header.1
+term 6818:   br i1 %exitcond16, label %kcall.configok, label %latch.0, !tulip.doall.loop.block !767
+SUSAN: condrelatedinst:  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: condrelatedinst:  %exitcond16 = icmp ne i32 %indvar.1, 256
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: declaring 3252:   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found in IV2Name map   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+name:  j
+SUSAN: reconstructed variable counter increment for iv:j
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+SUSAN: found in IV2Name map   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+name:  j
+SUSAN: declaring 3252:   %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: getting value name for:   %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+inst from IRNaming:   %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+original name : j
+returning name: j
+SUSAN: declaring with reconstructed name 3286: j
+SUSAN: getting value name for:   %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+inst from IRNaming:   %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+original name : j
+returning name: j
+CBackend: writeOperand 3595:   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found in IV2Name map   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+name:  j
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+Linear Region with entry block: kcall.configok
+SUSAN: printing bb:kcall.configok
+CBEBackend: printing bb 7082 kcall.configok
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: printing instruction   call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 %div, i32 1, i32 1, i32 256, i32 1, i32 1, i32 %indvar.0, i32 0, i32 0, i32 %indvar.1, i32 0, i32 0) at 6678
+CBackend: writeOperand 3595: 
+; Function Attrs: convergent noinline nounwind
+define dso_local void @_Z12sumReductionPiS_.1(i32* %v, i32* %v_r, i32 %gridDim.x, i32 %gridDim.y, i32 %gridDim.z, i32 %blockDim.x, i32 %blockDim.y, i32 %blockDim.z, i32 %blockIdx.x, i32 %blockIdx.y, i32 %blockIdx.z, i32 %threadIdx.x, i32 %threadIdx.y, i32 %threadIdx.z) #6 {
+entry:
+  %sharedMem0 = alloca [256 x i32]
+  call void @llvm.dbg.value(metadata i32* %v, metadata !803, metadata !DIExpression()), !dbg !804
+  call void @llvm.dbg.value(metadata i32* %v_r, metadata !805, metadata !DIExpression()), !dbg !804
+  %mul = mul i32 %blockIdx.x, %blockDim.x, !dbg !806
+  %add = add i32 %mul, %threadIdx.x, !dbg !807
+  call void @llvm.dbg.value(metadata i32 %add, metadata !808, metadata !DIExpression()), !dbg !804
+  %idxprom = sext i32 %add to i64, !dbg !809
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %idxprom, !dbg !809
+  %0 = load i32, i32* %arrayidx, align 4, !dbg !809
+  %idxprom4 = zext i32 %threadIdx.x to i64, !dbg !810
+  %arrayidx5 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom4, !dbg !810
+  store i32 %0, i32* %arrayidx5, align 4, !dbg !811
+  call void @llvm.dbg.value(metadata i32 1, metadata !812, metadata !DIExpression()), !dbg !814
+  br label %for.cond, !dbg !815
+
+for.cond:                                         ; preds = %for.inc, %entry
+  %s.0 = phi i32 [ 1, %entry ], [ %mul18, %for.inc ], !dbg !814
+  call void @llvm.dbg.value(metadata i32 %s.0, metadata !812, metadata !DIExpression()), !dbg !814
+  %cmp = icmp ult i32 %s.0, %blockDim.x, !dbg !816
+  br i1 %cmp, label %for.body, label %for.end, !dbg !818
+
+for.body:                                         ; preds = %for.cond
+  %mul7 = mul nuw nsw i32 2, %s.0, !dbg !819
+  %mul9 = mul i32 %mul7, %threadIdx.x, !dbg !821
+  call void @llvm.dbg.value(metadata i32 %mul9, metadata !822, metadata !DIExpression()), !dbg !823
+  %cmp11 = icmp ult i32 %mul9, %blockDim.x, !dbg !824
+  br i1 %cmp11, label %if.then, label %if.end, !dbg !826
+
+if.then:                                          ; preds = %for.body
+  %add12 = add nsw i32 %mul9, %s.0, !dbg !827
+  %idxprom13 = sext i32 %add12 to i64, !dbg !829
+  %arrayidx14 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom13, !dbg !829
+  %1 = load i32, i32* %arrayidx14, align 4, !dbg !829
+  %idxprom15 = sext i32 %mul9 to i64, !dbg !830
+  %arrayidx16 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom15, !dbg !830
+  %2 = load i32, i32* %arrayidx16, align 4, !dbg !831
+  %add17 = add nsw i32 %2, %1, !dbg !831
+  store i32 %add17, i32* %arrayidx16, align 4, !dbg !831
+  br label %if.end, !dbg !832
+
+if.end:                                           ; preds = %if.then, %for.body
+  br label %for.inc, !dbg !833
+
+for.inc:                                          ; preds = %if.end
+  %mul18 = mul nuw nsw i32 %s.0, 2, !dbg !834
+  call void @llvm.dbg.value(metadata i32 %mul18, metadata !812, metadata !DIExpression()), !dbg !814
+  br label %for.cond, !dbg !835, !llvm.loop !836
+
+for.end:                                          ; preds = %for.cond
+  %cmp20 = icmp eq i32 %threadIdx.x, 0, !dbg !838
+  br i1 %cmp20, label %if.then21, label %if.end25, !dbg !840
+
+if.then21:                                        ; preds = %for.end
+  %sharedMem.gep1 = getelementptr [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 0
+  %3 = load i32, i32* %sharedMem.gep1, align 4, !dbg !841
+  %idxprom23 = zext i32 %blockIdx.x to i64, !dbg !843
+  %arrayidx24 = getelementptr inbounds i32, i32* %v_r, i64 %idxprom23, !dbg !843
+  store i32 %3, i32* %arrayidx24, align 4, !dbg !844
+  br label %if.end25, !dbg !845
+
+if.end25:                                         ; preds = %if.then21, %for.end
+  ret void, !dbg !846
+}
+
+SUSAN: getting value name for: 
+; Function Attrs: convergent noinline nounwind
+define dso_local void @_Z12sumReductionPiS_.1(i32* %v, i32* %v_r, i32 %gridDim.x, i32 %gridDim.y, i32 %gridDim.z, i32 %blockDim.x, i32 %blockDim.y, i32 %blockDim.z, i32 %blockIdx.x, i32 %blockIdx.y, i32 %blockIdx.z, i32 %threadIdx.x, i32 %threadIdx.y, i32 %threadIdx.z) #6 {
+entry:
+  %sharedMem0 = alloca [256 x i32]
+  call void @llvm.dbg.value(metadata i32* %v, metadata !803, metadata !DIExpression()), !dbg !804
+  call void @llvm.dbg.value(metadata i32* %v_r, metadata !805, metadata !DIExpression()), !dbg !804
+  %mul = mul i32 %blockIdx.x, %blockDim.x, !dbg !806
+  %add = add i32 %mul, %threadIdx.x, !dbg !807
+  call void @llvm.dbg.value(metadata i32 %add, metadata !808, metadata !DIExpression()), !dbg !804
+  %idxprom = sext i32 %add to i64, !dbg !809
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %idxprom, !dbg !809
+  %0 = load i32, i32* %arrayidx, align 4, !dbg !809
+  %idxprom4 = zext i32 %threadIdx.x to i64, !dbg !810
+  %arrayidx5 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom4, !dbg !810
+  store i32 %0, i32* %arrayidx5, align 4, !dbg !811
+  call void @llvm.dbg.value(metadata i32 1, metadata !812, metadata !DIExpression()), !dbg !814
+  br label %for.cond, !dbg !815
+
+for.cond:                                         ; preds = %for.inc, %entry
+  %s.0 = phi i32 [ 1, %entry ], [ %mul18, %for.inc ], !dbg !814
+  call void @llvm.dbg.value(metadata i32 %s.0, metadata !812, metadata !DIExpression()), !dbg !814
+  %cmp = icmp ult i32 %s.0, %blockDim.x, !dbg !816
+  br i1 %cmp, label %for.body, label %for.end, !dbg !818
+
+for.body:                                         ; preds = %for.cond
+  %mul7 = mul nuw nsw i32 2, %s.0, !dbg !819
+  %mul9 = mul i32 %mul7, %threadIdx.x, !dbg !821
+  call void @llvm.dbg.value(metadata i32 %mul9, metadata !822, metadata !DIExpression()), !dbg !823
+  %cmp11 = icmp ult i32 %mul9, %blockDim.x, !dbg !824
+  br i1 %cmp11, label %if.then, label %if.end, !dbg !826
+
+if.then:                                          ; preds = %for.body
+  %add12 = add nsw i32 %mul9, %s.0, !dbg !827
+  %idxprom13 = sext i32 %add12 to i64, !dbg !829
+  %arrayidx14 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom13, !dbg !829
+  %1 = load i32, i32* %arrayidx14, align 4, !dbg !829
+  %idxprom15 = sext i32 %mul9 to i64, !dbg !830
+  %arrayidx16 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom15, !dbg !830
+  %2 = load i32, i32* %arrayidx16, align 4, !dbg !831
+  %add17 = add nsw i32 %2, %1, !dbg !831
+  store i32 %add17, i32* %arrayidx16, align 4, !dbg !831
+  br label %if.end, !dbg !832
+
+if.end:                                           ; preds = %if.then, %for.body
+  br label %for.inc, !dbg !833
+
+for.inc:                                          ; preds = %if.end
+  %mul18 = mul nuw nsw i32 %s.0, 2, !dbg !834
+  call void @llvm.dbg.value(metadata i32 %mul18, metadata !812, metadata !DIExpression()), !dbg !814
+  br label %for.cond, !dbg !835, !llvm.loop !836
+
+for.end:                                          ; preds = %for.cond
+  %cmp20 = icmp eq i32 %threadIdx.x, 0, !dbg !838
+  br i1 %cmp20, label %if.then21, label %if.end25, !dbg !840
+
+if.then21:                                        ; preds = %for.end
+  %sharedMem.gep1 = getelementptr [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 0
+  %3 = load i32, i32* %sharedMem.gep1, align 4, !dbg !841
+  %idxprom23 = zext i32 %blockIdx.x to i64, !dbg !843
+  %arrayidx24 = getelementptr inbounds i32, i32* %v_r, i64 %idxprom23, !dbg !843
+  store i32 %3, i32* %arrayidx24, align 4, !dbg !844
+  br label %if.end25, !dbg !845
+
+if.end25:                                         ; preds = %if.then21, %for.end
+  ret void, !dbg !846
+}
+
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32* undef
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32* undef
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %div = sdiv i32 65536, 256, !dbg !770
+SUSAN: getting value name for:   %div = sdiv i32 65536, 256, !dbg !770
+inst from IRNaming:   %div = sdiv i32 65536, 256, !dbg !770
+original name : GRID_SIZE
+returning name: GRID_SIZE
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 256
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found in IV2Name map   %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+name:  i
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found in IV2Name map   %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+name:  j
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+printing unconditional branch   br label %latch.1
+CBERegion: printing latchBB latch.1
+CBERegion: I 316:   %indvar.next.1 = add nuw nsw i32 %indvar.1, 1
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+CBERegion: I 316:   br label %header.1
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+SUSAN: found IV 784  %indvar.1 = phi i32 [ %indvar.next.1, %latch.1 ], [ 0, %header.1.preheader ]
+CBERegion: printing latchBB latch.0
+CBERegion: I 316:   %indvar.next.0 = add i32 %indvar.0, 1
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+CBERegion: I 316:   br label %header.0
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+SUSAN: found IV 784  %indvar.0 = phi i32 [ 0, %entry ], [ %indvar.next.0, %latch.0 ]
+Linear Region with entry block: kcall.end
+SUSAN: printing bb:kcall.end
+CBEBackend: printing bb 7082 kcall.end
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.04 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.04
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.04 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 0
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.04 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 0
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.15 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.15
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.15 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 1
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.15 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 1
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.26 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.26
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.26 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 2
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.26 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp9, i32 0, i32 2
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 256, i32* %dim3gep.07 at 6678
+CBEBackend: printing store Inst:   store i32 256, i32* %dim3gep.07
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.07 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 0
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.07 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 0
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 256
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.18 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.18
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.18 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 1
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.18 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 1
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   store i32 1, i32* %dim3gep.29 at 6678
+CBEBackend: printing store Inst:   store i32 1, i32* %dim3gep.29
+CBackend: here? 10442
+SUSAN: GEPINST:   %dim3gep.29 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 2
+SUSAN: dereferenceTimes = 1
+SUSAN: printing GEP:   %dim3gep.29 = getelementptr %struct.dim3, %struct.dim3* %agg.tmp10, i32 0, i32 2
+SUSAN: accessMemory true
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: is StructType 10074
+CBackend: here? 10445
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: here? 10462
+SUSAN: printing instruction   %10 = call i8* @memcpy(i8* %8, i8* %9, i64 12), !dbg !773 at 6678
+CBackend: writeOperand 3595: 
+declare i8* @memcpy(i8*, i8*, i64)
+
+SUSAN: getting value name for: 
+declare i8* @memcpy(i8*, i8*, i64)
+
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %8 = bitcast { i64, i32 }* %agg.tmp9.coerce to i8*, !dbg !773
+SUSAN: visiting cast:   %8 = bitcast { i64, i32 }* %agg.tmp9.coerce to i8*, !dbg !773
+SUSAN: printing cast from: { i64, i32 }* to i8*
+CBackend: writeOperand 3595:   %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+SUSAN: getting value name for:   %agg.tmp9.coerce = alloca { i64, i32 }, align 4
+CBackend: writeoperand here 3674? 
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %9 = bitcast %struct.dim3* %agg.tmp9 to i8*, !dbg !773
+SUSAN: visiting cast:   %9 = bitcast %struct.dim3* %agg.tmp9 to i8*, !dbg !773
+SUSAN: printing cast from: %struct.dim3* to i8*
+CBackend: writeOperand 3595:   %agg.tmp9 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp9 = alloca %struct.dim3, align 4
+CBackend: writeoperand here 3674? 
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i64 12
+CBackend: writeoperand here 3674? 
+SUSAN: printing instruction   %13 = call i8* @memcpy(i8* %11, i8* %12, i64 12), !dbg !773 at 6678
+CBackend: writeOperand 3595: 
+declare i8* @memcpy(i8*, i8*, i64)
+
+SUSAN: getting value name for: 
+declare i8* @memcpy(i8*, i8*, i64)
+
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %11 = bitcast { i64, i32 }* %agg.tmp10.coerce to i8*, !dbg !773
+SUSAN: visiting cast:   %11 = bitcast { i64, i32 }* %agg.tmp10.coerce to i8*, !dbg !773
+SUSAN: printing cast from: { i64, i32 }* to i8*
+CBackend: writeOperand 3595:   %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+SUSAN: getting value name for:   %agg.tmp10.coerce = alloca { i64, i32 }, align 4
+CBackend: writeoperand here 3674? 
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %12 = bitcast %struct.dim3* %agg.tmp10 to i8*, !dbg !773
+SUSAN: visiting cast:   %12 = bitcast %struct.dim3* %agg.tmp10 to i8*, !dbg !773
+SUSAN: printing cast from: %struct.dim3* to i8*
+CBackend: writeOperand 3595:   %agg.tmp10 = alloca %struct.dim3, align 4
+SUSAN: getting value name for:   %agg.tmp10 = alloca %struct.dim3, align 4
+CBackend: writeoperand here 3674? 
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i64 12
+CBackend: writeoperand here 3674? 
+printing unconditional branch   br label %header.011
+Loop Region with entry block: header.011
+term 6818:   br i1 %exitcond, label %kcall.configok13, label %kcall.end14, !tulip.doall.loop.block !767
+SUSAN: condrelatedinst:  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: condrelatedinst:  %exitcond = icmp ne i32 %indvar.013, 256
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: declaring 3252:   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found in IV2Name map   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+name:  i
+SUSAN: reconstructed variable counter increment for iv:i
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+SUSAN: found in IV2Name map   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+name:  i
+SUSAN: declaring 3252:   %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+SUSAN: getting value name for:   %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+inst from IRNaming:   %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+original name : i
+returning name: i
+SUSAN: declaring with reconstructed name 3286: i
+SUSAN: getting value name for:   %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+inst from IRNaming:   %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+original name : i
+returning name: i
+CBackend: writeOperand 3595:   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found in IV2Name map   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+name:  i
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+Linear Region with entry block: kcall.configok13
+SUSAN: printing bb:kcall.configok13
+CBEBackend: printing bb 7082 kcall.configok13
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: printing instruction   call void @_Z12sumReductionPiS_.1(i32* undef, i32* undef, i32 1, i32 1, i32 1, i32 256, i32 1, i32 1, i32 0, i32 0, i32 0, i32 %indvar.013, i32 0, i32 0) at 6678
+CBackend: writeOperand 3595: 
+; Function Attrs: convergent noinline nounwind
+define dso_local void @_Z12sumReductionPiS_.1(i32* %v, i32* %v_r, i32 %gridDim.x, i32 %gridDim.y, i32 %gridDim.z, i32 %blockDim.x, i32 %blockDim.y, i32 %blockDim.z, i32 %blockIdx.x, i32 %blockIdx.y, i32 %blockIdx.z, i32 %threadIdx.x, i32 %threadIdx.y, i32 %threadIdx.z) #6 {
+entry:
+  %sharedMem0 = alloca [256 x i32]
+  call void @llvm.dbg.value(metadata i32* %v, metadata !803, metadata !DIExpression()), !dbg !804
+  call void @llvm.dbg.value(metadata i32* %v_r, metadata !805, metadata !DIExpression()), !dbg !804
+  %mul = mul i32 %blockIdx.x, %blockDim.x, !dbg !806
+  %add = add i32 %mul, %threadIdx.x, !dbg !807
+  call void @llvm.dbg.value(metadata i32 %add, metadata !808, metadata !DIExpression()), !dbg !804
+  %idxprom = sext i32 %add to i64, !dbg !809
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %idxprom, !dbg !809
+  %0 = load i32, i32* %arrayidx, align 4, !dbg !809
+  %idxprom4 = zext i32 %threadIdx.x to i64, !dbg !810
+  %arrayidx5 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom4, !dbg !810
+  store i32 %0, i32* %arrayidx5, align 4, !dbg !811
+  call void @llvm.dbg.value(metadata i32 1, metadata !812, metadata !DIExpression()), !dbg !814
+  br label %for.cond, !dbg !815
+
+for.cond:                                         ; preds = %for.inc, %entry
+  %s.0 = phi i32 [ 1, %entry ], [ %mul18, %for.inc ], !dbg !814
+  call void @llvm.dbg.value(metadata i32 %s.0, metadata !812, metadata !DIExpression()), !dbg !814
+  %cmp = icmp ult i32 %s.0, %blockDim.x, !dbg !816
+  br i1 %cmp, label %for.body, label %for.end, !dbg !818
+
+for.body:                                         ; preds = %for.cond
+  %mul7 = mul nuw nsw i32 2, %s.0, !dbg !819
+  %mul9 = mul i32 %mul7, %threadIdx.x, !dbg !821
+  call void @llvm.dbg.value(metadata i32 %mul9, metadata !822, metadata !DIExpression()), !dbg !823
+  %cmp11 = icmp ult i32 %mul9, %blockDim.x, !dbg !824
+  br i1 %cmp11, label %if.then, label %if.end, !dbg !826
+
+if.then:                                          ; preds = %for.body
+  %add12 = add nsw i32 %mul9, %s.0, !dbg !827
+  %idxprom13 = sext i32 %add12 to i64, !dbg !829
+  %arrayidx14 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom13, !dbg !829
+  %1 = load i32, i32* %arrayidx14, align 4, !dbg !829
+  %idxprom15 = sext i32 %mul9 to i64, !dbg !830
+  %arrayidx16 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom15, !dbg !830
+  %2 = load i32, i32* %arrayidx16, align 4, !dbg !831
+  %add17 = add nsw i32 %2, %1, !dbg !831
+  store i32 %add17, i32* %arrayidx16, align 4, !dbg !831
+  br label %if.end, !dbg !832
+
+if.end:                                           ; preds = %if.then, %for.body
+  br label %for.inc, !dbg !833
+
+for.inc:                                          ; preds = %if.end
+  %mul18 = mul nuw nsw i32 %s.0, 2, !dbg !834
+  call void @llvm.dbg.value(metadata i32 %mul18, metadata !812, metadata !DIExpression()), !dbg !814
+  br label %for.cond, !dbg !835, !llvm.loop !836
+
+for.end:                                          ; preds = %for.cond
+  %cmp20 = icmp eq i32 %threadIdx.x, 0, !dbg !838
+  br i1 %cmp20, label %if.then21, label %if.end25, !dbg !840
+
+if.then21:                                        ; preds = %for.end
+  %sharedMem.gep1 = getelementptr [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 0
+  %3 = load i32, i32* %sharedMem.gep1, align 4, !dbg !841
+  %idxprom23 = zext i32 %blockIdx.x to i64, !dbg !843
+  %arrayidx24 = getelementptr inbounds i32, i32* %v_r, i64 %idxprom23, !dbg !843
+  store i32 %3, i32* %arrayidx24, align 4, !dbg !844
+  br label %if.end25, !dbg !845
+
+if.end25:                                         ; preds = %if.then21, %for.end
+  ret void, !dbg !846
+}
+
+SUSAN: getting value name for: 
+; Function Attrs: convergent noinline nounwind
+define dso_local void @_Z12sumReductionPiS_.1(i32* %v, i32* %v_r, i32 %gridDim.x, i32 %gridDim.y, i32 %gridDim.z, i32 %blockDim.x, i32 %blockDim.y, i32 %blockDim.z, i32 %blockIdx.x, i32 %blockIdx.y, i32 %blockIdx.z, i32 %threadIdx.x, i32 %threadIdx.y, i32 %threadIdx.z) #6 {
+entry:
+  %sharedMem0 = alloca [256 x i32]
+  call void @llvm.dbg.value(metadata i32* %v, metadata !803, metadata !DIExpression()), !dbg !804
+  call void @llvm.dbg.value(metadata i32* %v_r, metadata !805, metadata !DIExpression()), !dbg !804
+  %mul = mul i32 %blockIdx.x, %blockDim.x, !dbg !806
+  %add = add i32 %mul, %threadIdx.x, !dbg !807
+  call void @llvm.dbg.value(metadata i32 %add, metadata !808, metadata !DIExpression()), !dbg !804
+  %idxprom = sext i32 %add to i64, !dbg !809
+  %arrayidx = getelementptr inbounds i32, i32* %v, i64 %idxprom, !dbg !809
+  %0 = load i32, i32* %arrayidx, align 4, !dbg !809
+  %idxprom4 = zext i32 %threadIdx.x to i64, !dbg !810
+  %arrayidx5 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom4, !dbg !810
+  store i32 %0, i32* %arrayidx5, align 4, !dbg !811
+  call void @llvm.dbg.value(metadata i32 1, metadata !812, metadata !DIExpression()), !dbg !814
+  br label %for.cond, !dbg !815
+
+for.cond:                                         ; preds = %for.inc, %entry
+  %s.0 = phi i32 [ 1, %entry ], [ %mul18, %for.inc ], !dbg !814
+  call void @llvm.dbg.value(metadata i32 %s.0, metadata !812, metadata !DIExpression()), !dbg !814
+  %cmp = icmp ult i32 %s.0, %blockDim.x, !dbg !816
+  br i1 %cmp, label %for.body, label %for.end, !dbg !818
+
+for.body:                                         ; preds = %for.cond
+  %mul7 = mul nuw nsw i32 2, %s.0, !dbg !819
+  %mul9 = mul i32 %mul7, %threadIdx.x, !dbg !821
+  call void @llvm.dbg.value(metadata i32 %mul9, metadata !822, metadata !DIExpression()), !dbg !823
+  %cmp11 = icmp ult i32 %mul9, %blockDim.x, !dbg !824
+  br i1 %cmp11, label %if.then, label %if.end, !dbg !826
+
+if.then:                                          ; preds = %for.body
+  %add12 = add nsw i32 %mul9, %s.0, !dbg !827
+  %idxprom13 = sext i32 %add12 to i64, !dbg !829
+  %arrayidx14 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom13, !dbg !829
+  %1 = load i32, i32* %arrayidx14, align 4, !dbg !829
+  %idxprom15 = sext i32 %mul9 to i64, !dbg !830
+  %arrayidx16 = getelementptr inbounds [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 %idxprom15, !dbg !830
+  %2 = load i32, i32* %arrayidx16, align 4, !dbg !831
+  %add17 = add nsw i32 %2, %1, !dbg !831
+  store i32 %add17, i32* %arrayidx16, align 4, !dbg !831
+  br label %if.end, !dbg !832
+
+if.end:                                           ; preds = %if.then, %for.body
+  br label %for.inc, !dbg !833
+
+for.inc:                                          ; preds = %if.end
+  %mul18 = mul nuw nsw i32 %s.0, 2, !dbg !834
+  call void @llvm.dbg.value(metadata i32 %mul18, metadata !812, metadata !DIExpression()), !dbg !814
+  br label %for.cond, !dbg !835, !llvm.loop !836
+
+for.end:                                          ; preds = %for.cond
+  %cmp20 = icmp eq i32 %threadIdx.x, 0, !dbg !838
+  br i1 %cmp20, label %if.then21, label %if.end25, !dbg !840
+
+if.then21:                                        ; preds = %for.end
+  %sharedMem.gep1 = getelementptr [256 x i32], [256 x i32]* %sharedMem0, i64 0, i64 0
+  %3 = load i32, i32* %sharedMem.gep1, align 4, !dbg !841
+  %idxprom23 = zext i32 %blockIdx.x to i64, !dbg !843
+  %arrayidx24 = getelementptr inbounds i32, i32* %v_r, i64 %idxprom23, !dbg !843
+  store i32 %3, i32* %arrayidx24, align 4, !dbg !844
+  br label %if.end25, !dbg !845
+
+if.end25:                                         ; preds = %if.then21, %for.end
+  ret void, !dbg !846
+}
+
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32* undef
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32* undef
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 256
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found in IV2Name map   %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+name:  i
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i32 0
+CBackend: writeoperand here 3674? 
+printing unconditional branch   br label %latch.012
+CBERegion: printing latchBB latch.012
+CBERegion: I 316:   %indvar.next.015 = add nuw nsw i32 %indvar.013, 1
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+CBERegion: I 316:   br label %header.011
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+SUSAN: found IV 784  %indvar.013 = phi i32 [ 0, %kcall.end ], [ %indvar.next.015, %latch.012 ]
+Linear Region with entry block: kcall.end14
+SUSAN: printing bb:kcall.end14
+CBEBackend: printing bb 7082 kcall.end14
+SUSAN: printing instruction   %call17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i32 %16), !dbg !779 at 6678
+CBackend: writeOperand 3595: 
+declare dso_local i32 @printf(i8*, ...) #4
+
+SUSAN: getting value name for: 
+declare dso_local i32 @printf(i8*, ...) #4
+
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595: i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0)
+SUSAN: first index is struct or array type
+SUSAN: printing Ptr 9975 @.str = private unnamed_addr constant [27 x i8] c"COMPLETED SUCCESSFULLY %d\0A\00", align 1
+SUSAN: getting value name for: @.str = private unnamed_addr constant [27 x i8] c"COMPLETED SUCCESSFULLY %d\0A\00", align 1
+CBackend: writeoperand here 3674? 
+CBackend: writeOperand 3595:   %16 = load i32, i32* %arrayidx, align 4, !dbg !778
+SUSAN: loadInst:   %16 = load i32, i32* %arrayidx, align 4, !dbg !778
+SUSAN: GEPINST:   %arrayidx = getelementptr inbounds i32, i32* undef, i64 0, !dbg !778
+splendid: /scratch/xcellent/shudson/llvm-project/llvm/projects/llvm-cbe/lib/Target/CBackend/CBackend.cpp:9871: llvm::Value* llvm_cbe::CWriter::findUnderlyingObject(llvm::Value*): Assertion `expr && "SUSAN: finding UO of a non GEP constant expression?\n"' failed.
+ #0 0x0000556e00f5609d llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x205c09d)
+ #1 0x0000556e00f5613d PrintStackTraceSignalHandler(void*) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x205c13d)
+ #2 0x0000556e00f53f2e llvm::sys::RunSignalHandlers() (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x2059f2e)
+ #3 0x0000556e00f55a12 SignalHandler(int) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x205ba12)
+ #4 0x00007fe460da0520 (/lib/x86_64-linux-gnu/libc.so.6+0x42520)
+ #5 0x00007fe460df49fc pthread_kill (/lib/x86_64-linux-gnu/libc.so.6+0x969fc)
+ #6 0x00007fe460da0476 raise (/lib/x86_64-linux-gnu/libc.so.6+0x42476)
+ #7 0x00007fe460d867f3 abort (/lib/x86_64-linux-gnu/libc.so.6+0x287f3)
+ #8 0x00007fe460d8671b (/lib/x86_64-linux-gnu/libc.so.6+0x2871b)
+ #9 0x00007fe460d97e96 (/lib/x86_64-linux-gnu/libc.so.6+0x39e96)
+#10 0x0000556dfff7bf65 llvm_cbe::CWriter::findUnderlyingObject(llvm::Value*) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x1081f65)
+#11 0x0000556dfff7d887 llvm_cbe::CWriter::writeMemoryAccess(llvm::Value*, llvm::Type*, bool, unsigned int) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x1083887)
+#12 0x0000556dfff7e168 llvm_cbe::CWriter::visitLoadInst(llvm::LoadInst&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x1084168)
+#13 0x0000556dfffa1ef7 llvm::InstVisitor<llvm_cbe::CWriter, void>::visitLoad(llvm::LoadInst&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x10a7ef7)
+#14 0x0000556dfff8e9cf llvm::InstVisitor<llvm_cbe::CWriter, void>::visit(llvm::Instruction&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x10949cf)
+#15 0x0000556dfff8ad21 llvm::InstVisitor<llvm_cbe::CWriter, void>::visit(llvm::Instruction*) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x1090d21)
+#16 0x0000556dfff57603 llvm_cbe::CWriter::writeInstComputationInline(llvm::Instruction&, bool) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x105d603)
+#17 0x0000556dfff5821c llvm_cbe::CWriter::writeOperandInternal(llvm::Value*, llvm_cbe::CWriter::OperandContext, bool) (.localalias) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x105e21c)
+#18 0x0000556dfff58ad3 llvm_cbe::CWriter::writeOperand(llvm::Value*, llvm_cbe::CWriter::OperandContext, bool) (.localalias) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x105ead3)
+#19 0x0000556dfff79b44 llvm_cbe::CWriter::visitCallInst(llvm::CallInst&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x107fb44)
+#20 0x0000556dfffbe358 llvm::InstVisitor<llvm_cbe::CWriter, void>::delegateCallInst(llvm::CallInst&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x10c4358)
+#21 0x0000556dfffa22e7 llvm::InstVisitor<llvm_cbe::CWriter, void>::visitCall(llvm::CallInst&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x10a82e7)
+#22 0x0000556dfff8ec0f llvm::InstVisitor<llvm_cbe::CWriter, void>::visit(llvm::Instruction&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x1094c0f)
+#23 0x0000556dfff8ad21 llvm::InstVisitor<llvm_cbe::CWriter, void>::visit(llvm::Instruction*) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x1090d21)
+#24 0x0000556dfff57603 llvm_cbe::CWriter::writeInstComputationInline(llvm::Instruction&, bool) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x105d603)
+#25 0x0000556dfff6c636 llvm_cbe::CWriter::printBasicBlock(llvm::BasicBlock*, std::set<llvm::Value*, std::less<llvm::Value*>, std::allocator<llvm::Value*> >) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x1072636)
+#26 0x0000556dffff3a68 llvm_cbe::LinearRegion::printRegionDAG() (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x10f9a68)
+#27 0x0000556dffff4c8d llvm_cbe::CBERegion2::printRegionDAG() (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x10fac8d)
+#28 0x0000556dfff68fb9 llvm_cbe::CWriter::printFunction(llvm::Function&, bool) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x106efb9)
+#29 0x0000556dfff4eba8 llvm_cbe::CWriter::runOnModule(llvm::Module&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x1054ba8)
+#30 0x0000556e006de4bf (anonymous namespace)::MPPassManager::runOnModule(llvm::Module&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x17e44bf)
+#31 0x0000556e006decf4 llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x17e4cf4)
+#32 0x0000556e006def17 llvm::legacy::PassManager::run(llvm::Module&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x17e4f17)
+#33 0x0000556dff516e3f compileModule(char**, llvm::LLVMContext&) (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x61ce3f)
+#34 0x0000556dff5161f9 main (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x61c1f9)
+#35 0x00007fe460d87d90 (/lib/x86_64-linux-gnu/libc.so.6+0x29d90)
+#36 0x00007fe460d87e40 __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e40)
+#37 0x0000556dff5146e5 _start (/home/shudson/xcellent/llvm-install-debug/bin/splendid+0x61a6e5)
+Stack dump:
+0.	Program arguments: /home/shudson/xcellent/llvm-install-debug/bin/splendid reduction_cpu.bc 
+1.	Running pass 'C backend' on module 'reduction_cpu.bc'.
+Aborted (core dumped)

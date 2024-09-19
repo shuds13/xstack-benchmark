@@ -1,0 +1,36 @@
+clang -fopenmp -O3  trmm_omp.c -o openmp.clang.exe
+trmm_omp.c:104:27: warning: incompatible pointer types passing 'double *' to parameter of type 'double (*)[*]' [-Wincompatible-pointer-types]
+  kernel_trmm(n,m, alpha, A, B);
+                          ^
+trmm_omp.c:66:11: note: passing argument to parameter 'A' here
+                 double A[n][m],
+                        ^
+trmm_omp.c:104:30: warning: incompatible pointer types passing 'double *' to parameter of type 'double (*)[*]' [-Wincompatible-pointer-types]
+  kernel_trmm(n,m, alpha, A, B);
+                             ^
+trmm_omp.c:67:11: note: passing argument to parameter 'B' here
+                 double B[m][n])
+                        ^
+2 warnings generated.
+gcc -fopenmp -O3 trmm_omp.c -o openmp.gcc.exe 
+trmm_omp.c: In function ‘main’:
+trmm_omp.c:104:27: warning: passing argument 4 of ‘kernel_trmm’ from incompatible pointer type [-Wincompatible-pointer-types]
+  104 |   kernel_trmm(n,m, alpha, A, B);
+      |                           ^
+      |                           |
+      |                           double *
+trmm_omp.c:66:25: note: expected ‘double (*)[m]’ but argument is of type ‘double *’
+   66 |                  double A[n][m],
+      |                  ~~~~~~~^~~~~~~
+trmm_omp.c:104:30: warning: passing argument 5 of ‘kernel_trmm’ from incompatible pointer type [-Wincompatible-pointer-types]
+  104 |   kernel_trmm(n,m, alpha, A, B);
+      |                              ^
+      |                              |
+      |                              double *
+trmm_omp.c:67:25: note: expected ‘double (*)[n]’ but argument is of type ‘double *’
+   67 |                  double B[m][n])
+      |                  ~~~~~~~^~~~~~~
+./openmp.clang.exe 1 10 10 2> openmp.clang.out
+./openmp.gcc.exe 1 10 10 2> openmp.gcc.out
+/usr/bin/time -f "%e" ./openmp.clang.exe 0 3200 3200 2> openmp.clang.time
+/usr/bin/time -f "%e" ./openmp.gcc.exe 0 3200 3200 2> openmp.gcc.time
